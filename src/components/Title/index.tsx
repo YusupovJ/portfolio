@@ -20,8 +20,8 @@ const Title: React.FC<Props> = (props) => {
 
 					if (letter === "*") {
 						return (
-							<Rotate childClassName="letter" delay={90 * index} key={index}>
-								<Logo />
+							<Rotate triggerOnce childClassName="letter" delay={90 * index} key={index}>
+								<Logo className="j" />
 							</Rotate>
 						);
 					}
@@ -29,7 +29,7 @@ const Title: React.FC<Props> = (props) => {
 					if (letter === " ") return " ";
 
 					return (
-						<Bounce childClassName="letter" key={index} delay={90 * index}>
+						<Bounce triggerOnce childClassName="letter" key={index} delay={90 * index}>
 							<span>{letter}</span>
 						</Bounce>
 					);

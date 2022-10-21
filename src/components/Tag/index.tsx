@@ -1,14 +1,27 @@
 import React, { memo } from "react";
-import { Wrapper } from "./style";
+import { rem } from "src/helpers/functions";
+import styled from "styled-components";
 
-interface Props {
+interface PropTypes {
 	name: string;
 	children: React.ReactNode;
 	gap?: number;
 	noWriteTag?: boolean;
 }
 
-const Tag: React.FC<Props> = (props) => {
+const Wrapper = styled.div<{ gap: number }>`
+	& > code {
+		font-family: LaBelleAurore;
+		color: ${(props) => props.theme.colors.tag};
+		font-size: ${rem(16)};
+		font-style: italic;
+	}
+	& > *:not(code) {
+		padding: 0px 0px 0px ${(props) => props.gap + "px"};
+	}
+`;
+
+const Tag: React.FC<PropTypes> = (props) => {
 	const openTag = `<${props.name}>`;
 	const closeTag = `</${props.name}>`;
 

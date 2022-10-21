@@ -1,11 +1,13 @@
 import Link from "next/link";
-import React, { memo } from "react";
+import React, { Dispatch, memo, SetStateAction } from "react";
 import { navbar } from "src/helpers/utils/navbar";
 import { Wrapper } from "./style";
 
-interface Props {}
+interface Props {
+	closeMenuOnRedirect: Dispatch<SetStateAction<boolean>>;
+}
 
-const Navbar: React.FC<Props> = (props) => {
+const Navbar: React.FC<Props> = ({ closeMenuOnRedirect }) => {
 	return (
 		<Wrapper>
 			{navbar.map((link) => {

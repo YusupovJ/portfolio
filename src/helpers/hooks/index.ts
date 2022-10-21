@@ -3,22 +3,6 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { toggle } from "../store/reducers/themeToggler";
 
-// Хук медиа запроса
-
-export const useMatchMedia = (breakpoint: number, type: "max" | "min" = "max"): boolean => {
-	const matchMedia = window.matchMedia(`(${type}-width: ${breakpoint}px)`);
-
-	const [reached, setReached] = useState<boolean>(matchMedia.matches);
-
-	matchMedia.addEventListener("change", (e) => {
-		setReached(e.matches);
-	});
-
-	return reached;
-};
-
-/* ------------------------------------ */
-
 // Хуки типизированных useDispatch и useSelector в redux
 
 export const useAppDispatch: () => AppDispatch = useDispatch;

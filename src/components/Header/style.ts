@@ -1,4 +1,4 @@
-import { rem } from "src/helpers/functions";
+import { em, rem } from "src/helpers/functions";
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
@@ -13,6 +13,15 @@ export const Wrapper = styled.header`
 	top: 0;
 	left: 0;
 	z-index: 1000;
+	overflow-y: auto;
+	transition: all 0.3s ease 0s;
+	@media only screen and (max-width: ${em(991.98)}) {
+		width: 100%;
+		transform: translate(0, -100%);
+		&.open {
+			transform: translate(0, 0);
+		}
+	}
 `;
 
 export const Title = styled.div`
@@ -38,5 +47,45 @@ export const Title = styled.div`
 	span {
 		display: inline-block;
 		font-size: ${rem(12)};
+	}
+`;
+
+export const Toggler = styled.button`
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	width: 50px;
+	z-index: 9999;
+	height: 50px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: ${(props) => props.theme.borderRad};
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	justify-content: space-between;
+	padding: 12.5px 7px;
+	transition: all 0.3s ease 0s;
+	span {
+		display: inline-block;
+		background-color: #fff;
+		width: 100%;
+		transition: all 0.3s ease 0s;
+		height: 3px;
+		transform-origin: left bottom;
+	}
+	&.open {
+		span:first-child {
+			transform: rotate(45deg) translate(2px, -5px);
+		}
+		span:nth-child(2) {
+			transform: scale(0);
+		}
+		span:last-child {
+			transform: rotate(-45deg) translate(4px, 5px);
+		}
+	}
+
+	@media only screen and (min-width: ${em(991.98)}) {
+		display: none;
 	}
 `;

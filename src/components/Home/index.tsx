@@ -15,10 +15,10 @@ const Home: React.FC<Props> = (props) => {
 	return (
 		<Wrapper>
 			<Title h={1}>Hi,%I'm *amshid%web developer</Title>
-			<Fade className="text" direction="up" delay={500}>
+			<Fade className="text" direction="up" delay={500} triggerOnce>
 				<Tag name="p">Front End Developer / ReactTS Expert</Tag>
 			</Fade>
-			<Fade className="button" direction="up" delay={1200}>
+			<Fade className="button" direction="up" delay={1200} triggerOnce>
 				<Button onClick={() => router.push("/contact")}>Contact me</Button>
 			</Fade>
 			<Canvas />

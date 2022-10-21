@@ -1,3 +1,4 @@
+import { em } from "src/helpers/functions";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
@@ -82,7 +83,6 @@ export const GlobalStyles = createGlobalStyle`
         color: ${(props) => props.theme.colors.text};
         background-color: ${(props) => props.theme.colors.bg};
         transition: background-color 0.3s;
-        padding: 0px 0px 0px 130px;
     }
 
     input::-webkit-outer-spin-button,
@@ -107,5 +107,11 @@ export const GlobalStyles = createGlobalStyle`
         font-family: LaBelleAurore;
         src: url("/fonts/LaBelleAurore.woff2") format("woff2");
         font-weight: 400;
+    }
+
+    @media only screen and (min-width: ${em(991.98)}){
+        body {
+            padding: 0px 0px 0px 130px;
+        }
     }
 `;
