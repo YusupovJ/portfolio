@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { em } from "src/helpers/functions";
 import styled from "styled-components";
 import Tag from "../Tag";
 
@@ -8,17 +7,14 @@ interface Props {
 }
 
 const Main = styled.main`
-	padding: 20px 0px 20px 30px;
-	@media only screen and (max-width: ${em(991.98)}) {
-		padding: 20px 0px 20px 15px;
-	}
+	padding: 20px 0px 20px 5px;
 `;
 
 const Page: React.FC<Props> = (props) => {
 	return (
 		<Main>
-			<Tag name="html" noWriteTag>
-				<Tag name="body" gap={0} noWriteTag>
+			<Tag tagName="html" noWriteTag dblGap>
+				<Tag tagName="body" gap={0} noWriteTag>
 					{props.children}
 				</Tag>
 			</Tag>

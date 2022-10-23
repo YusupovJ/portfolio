@@ -27,12 +27,15 @@ const bounce = keyframes`
 export const Wrapper = styled.div`
 	font-family: ${(props) => props.theme.secondaryFont};
 	line-height: 0.9;
+	user-select: none;
 	.letter {
 		transition: all 0.3s ease-out 0s;
 		display: inline-block;
-	}
-	.letter:hover {
-		animation: ${bounce} 1s ease-out 0s 1 normal both;
-		color: ${(props) => props.theme.colors.primary};
+		&.hover {
+			animation: ${bounce} 1s ease-out 0s 1 normal both;
+		}
+		&:hover {
+			color: ${(props) => props.theme.colors.primary};
+		}
 	}
 `;

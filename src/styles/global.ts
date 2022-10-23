@@ -83,6 +83,10 @@ export const GlobalStyles = createGlobalStyle`
         color: ${(props) => props.theme.colors.text};
         background-color: ${(props) => props.theme.colors.bg};
         transition: background-color 0.3s;
+        scrollbar-width: thin;
+        overflow-x: hidden;
+        height: 100vw;
+        scrollbar-color: ${(props) => props.theme.colors.bgSecondary} #44444446;
     }
 
     input::-webkit-outer-spin-button,
@@ -116,6 +120,19 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     *::selection {
-        background-color: #4444444f;
+        background-color: #44444446;
+    }
+
+    body::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    body::-webkit-scrollbar-track {
+        background-color: ${(props) => props.theme.colors.bgSecondary};   
+        border-radius: ${(props) => props.theme.borderRad};
+    }
+    
+    body::-webkit-scrollbar-thumb {
+        background-color: #44444446;   
     }
 `;

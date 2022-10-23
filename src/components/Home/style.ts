@@ -17,6 +17,11 @@ export const Wrapper = styled.section`
 		color: ${(props) => props.theme.colors.textSecondary};
 	}
 
+	.j {
+		width: 60px;
+		height: 72px;
+	}
+
 	.button {
 		margin: 20px 0px 0px 0px;
 	}

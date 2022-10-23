@@ -1,16 +1,13 @@
 import React, { memo, useEffect } from "react";
-import { em } from "src/helpers/functions";
 import styled from "styled-components";
 
-export const Wrapper = styled.canvas`
+export const Wrapper = styled.div`
 	position: absolute;
 	top: 0;
+	overflow: hidden;
 	left: 0;
 	z-index: -1;
-	filter: brightness(40%);
-	@media only screen and (min-width: ${em(991.98)}) {
-		left: 130px;
-	}
+	filter: brightness(80%);
 `;
 
 interface IProperties {
@@ -42,15 +39,14 @@ const Canvas: React.FC = () => {
 			return `rgba(${r}, ${g}, ${b}, ${a})`;
 		};
 
-		const { clientWidth } = document.documentElement;
 		// Настройки
 		const properties: IProperties = {
 			color: getColor(1),
 			radius: 3,
-			count: clientWidth > 574.98 ? 80 : 40,
+			count: document.documentElement.clientWidth > 574.98 ? 100 : 40,
 			velocity: 0.7,
-			w: clientWidth > 991.98 ? clientWidth - 130 : clientWidth,
-			h: 680,
+			w: document.documentElement.clientWidth,
+			h: document.documentElement.clientHeight,
 			lineLength: 150,
 			clickDistance: 50,
 			acceleration: 2,
@@ -59,16 +55,15 @@ const Canvas: React.FC = () => {
 		/* ------------------------------------ */
 
 		// Размеры холста
+		const setScale = () => {
+			canvas.width = document.documentElement.clientWidth;
+			canvas.height = document.documentElement.clientHeight;
+			properties.w = document.documentElement.clientWidth;
+			properties.h = document.documentElement.clientHeight;
+		};
 
-		canvas.width = properties.w;
-		canvas.height = properties.h;
-
-		window.addEventListener("resize", () => {
-			canvas.width =
-				document.documentElement.clientWidth > 991.98
-					? document.documentElement.clientWidth - 130
-					: document.documentElement.clientWidth;
-		});
+		window.addEventListener("resize", setScale);
+		setScale();
 
 		/* ------------------------------------ */
 
@@ -193,7 +188,11 @@ const Canvas: React.FC = () => {
 		init();
 	}, []);
 
-	return <Wrapper id="particles">Your browser don't support canvas</Wrapper>;
+	return (
+		<Wrapper>
+			<canvas id="particles">Your browser doesn't support a canvas</canvas>
+		</Wrapper>
+	);
 };
 
 export default memo(Canvas);

@@ -1,42 +1,61 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { em, rem } from "src/helpers/functions";
 import styled from "styled-components";
 
 interface PropTypes {
-	name: string;
+	tagName: string;
 	children: React.ReactNode;
 	gap?: number;
 	noWriteTag?: boolean;
+	dblGap?: boolean;
 }
 
-const Wrapper = styled.div<{ gap: number }>`
-	& > code {
+interface IStyleProps {
+	gap?: number;
+	tagName?: string;
+	dblGap?: boolean;
+}
+
+const Wrapper = styled.div<IStyleProps>`
+	position: relative;
+	margin: 10px 0px;
+	&::before,
+	&::after {
 		font-family: LaBelleAurore;
 		color: ${(props) => props.theme.colors.tag};
 		font-size: ${rem(16)};
 		font-style: italic;
 		user-select: none;
 	}
-	& > *:not(code) {
-		padding: 0px 0px 0px ${(props) => props.gap + "px"};
+
+	&::before {
+		content: "<${(props) => props.tagName}>";
+	}
+	&::after {
+		content: "</${(props) => props.tagName}>";
 	}
 
-	@media only screen and (max-width: ${em(767.98)}) {
-		& > *:not(code) {
-			padding: 0px 0px 0px 5px;
+	& > * {
+		padding: 0px 0px 0px ${(props) => (props.gap ?? 15) + "px"};
+	}
+
+	@media only screen and (max-width: ${em(424.98)}) {
+		& > * {
+			padding: 0px 0px 0px 2px;
 		}
 	}
 `;
 
 const Tag: React.FC<PropTypes> = (props) => {
-	const openTag = `<${props.name}>`;
-	const closeTag = `</${props.name}>`;
+	const [loaded, setLoaded] = useState<boolean>(false);
+
+	useEffect(() => {
+		setLoaded(true);
+	}, []);
 
 	return (
-		<Wrapper gap={props.gap ?? 15}>
-			<code>{openTag}</code>
-			{props.noWriteTag ? <div>{props.children}</div> : React.createElement(props.name, {}, props.children)}
-			<code>{closeTag}</code>
+		<Wrapper gap={props.gap} tagName={props.tagName} dblGap={props.dblGap}>
+			{loaded && React.createElement(props.noWriteTag ? "div" : props.tagName, {}, props.children)}
 		</Wrapper>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { Wrapper } from "./style";
 import Logo from "src/assets/svg/Logo.svg";
 import Tag from "../Tag";
@@ -12,16 +12,24 @@ interface Props {
 const Title: React.FC<Props> = (props) => {
 	const titleArray = props.children.split("");
 
+	const hoverHandler = (e: any) => {
+		e.target.closest("span, svg").classList.add("hover");
+
+		setTimeout(() => {
+			e.target.closest("span, svg").classList.remove("hover");
+		}, 1000);
+	};
+
 	return (
 		<Wrapper>
-			<Tag name={"h" + props.h}>
+			<Tag tagName={"h" + props.h}>
 				{titleArray.map((letter, index) => {
 					if (letter === "%") return <br key={index} />;
 
 					if (letter === "*") {
 						return (
-							<Rotate triggerOnce childClassName="letter" delay={90 * index} key={index}>
-								<Logo className="j" />
+							<Rotate childClassName="letter" delay={90 * index} key={index}>
+								<Logo onMouseOver={hoverHandler} className="j" />
 							</Rotate>
 						);
 					}
@@ -29,8 +37,8 @@ const Title: React.FC<Props> = (props) => {
 					if (letter === " ") return " ";
 
 					return (
-						<Bounce triggerOnce childClassName="letter" key={index} delay={90 * index}>
-							<span>{letter}</span>
+						<Bounce childClassName="letter" key={index} delay={90 * index}>
+							<span onMouseOver={hoverHandler}>{letter}</span>
 						</Bounce>
 					);
 				})}
