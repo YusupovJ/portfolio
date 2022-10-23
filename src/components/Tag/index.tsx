@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { rem } from "src/helpers/functions";
+import { em, rem } from "src/helpers/functions";
 import styled from "styled-components";
 
 interface PropTypes {
@@ -15,9 +15,16 @@ const Wrapper = styled.div<{ gap: number }>`
 		color: ${(props) => props.theme.colors.tag};
 		font-size: ${rem(16)};
 		font-style: italic;
+		user-select: none;
 	}
 	& > *:not(code) {
 		padding: 0px 0px 0px ${(props) => props.gap + "px"};
+	}
+
+	@media only screen and (max-width: ${em(767.98)}) {
+		& > *:not(code) {
+			padding: 0px 0px 0px 5px;
+		}
 	}
 `;
 

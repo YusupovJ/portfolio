@@ -31,4 +31,29 @@ export const Wrapper = styled.section`
 			height: 72px;
 		}
 	}
+
+	@media only screen and (max-width: ${em(767.98)}) {
+		h1 {
+			font-size: ${rem(60)};
+		}
+
+		.j {
+			width: 45px;
+			height: 60px;
+		}
+		.text {
+			font-size: ${rem(14)};
+		}
+	}
+
+	@media only screen and (max-width: ${em(474.98)}) {
+		h1 {
+			font-size: ${rem(45)};
+		}
+
+		.j {
+			width: 30px;
+			height: 40px;
+		}
+	}
 `;

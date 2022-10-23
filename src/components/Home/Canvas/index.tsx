@@ -6,10 +6,10 @@ export const Wrapper = styled.canvas`
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -2;
-	filter: brightness(30%);
+	z-index: -1;
+	filter: brightness(40%);
 	@media only screen and (min-width: ${em(991.98)}) {
-		transform: translate(130px, 0);
+		left: 130px;
 	}
 `;
 
@@ -21,6 +21,8 @@ interface IProperties {
 	w: number;
 	h: number;
 	lineLength: number;
+	clickDistance: number;
+	acceleration: number;
 }
 
 const Canvas: React.FC = () => {
@@ -30,15 +32,28 @@ const Canvas: React.FC = () => {
 
 		// Массив точек на экране
 		const particles: Particle[] = [];
+
+		let whichColor = Math.random() > 0.5 ? true : false;
+		const getColor = (a: number = 1): string => {
+			const r = whichColor ? "8" : "253";
+			const g = whichColor ? `253` : "33";
+			const b = whichColor ? `216` : "85";
+
+			return `rgba(${r}, ${g}, ${b}, ${a})`;
+		};
+
+		const { clientWidth } = document.documentElement;
 		// Настройки
 		const properties: IProperties = {
-			color: localStorage.getItem("theme") === "light" ? "#FD2155" : "#08fdd8",
-			radius: 4,
-			count: document.documentElement.clientWidth > 991.98 ? 60 : 40,
-			velocity: 1,
-			w: document.documentElement.clientWidth > 991.98 ? innerWidth - 130 : innerWidth,
+			color: getColor(1),
+			radius: 3,
+			count: clientWidth > 574.98 ? 80 : 40,
+			velocity: 0.7,
+			w: clientWidth > 991.98 ? clientWidth - 130 : clientWidth,
 			h: 680,
 			lineLength: 150,
+			clickDistance: 50,
+			acceleration: 2,
 		};
 
 		/* ------------------------------------ */
@@ -49,7 +64,10 @@ const Canvas: React.FC = () => {
 		canvas.height = properties.h;
 
 		window.addEventListener("resize", () => {
-			canvas.width = document.documentElement.clientWidth;
+			canvas.width =
+				document.documentElement.clientWidth > 991.98
+					? document.documentElement.clientWidth - 130
+					: document.documentElement.clientWidth;
 		});
 
 		/* ------------------------------------ */
@@ -58,8 +76,8 @@ const Canvas: React.FC = () => {
 		class Particle {
 			public x: number;
 			public y: number;
-			private velocityX: number;
-			private velocityY: number;
+			public velocityX: number;
+			public velocityY: number;
 
 			constructor() {
 				this.x = Math.random() * innerWidth;
@@ -70,18 +88,34 @@ const Canvas: React.FC = () => {
 
 			position() {
 				// Если точка хочет вылетить за экран, то устанавливаем противоположное движение
-				(this.x + this.velocityX > properties.w && this.velocityX > 0) ||
-				(this.x + this.velocityX < 0 && this.velocityX < 0)
-					? (this.velocityX *= -1)
-					: this.velocityX;
+				if (
+					(this.x + this.velocityX > properties.w && this.velocityX > 0) ||
+					(this.x + this.velocityX < 0 && this.velocityX < 0)
+				) {
+					this.velocityX *= -1;
+				}
 
-				(this.y + this.velocityY > properties.h && this.velocityY > 0) ||
-				(this.y + this.velocityY < 0 && this.velocityY < 0)
-					? (this.velocityY *= -1)
-					: this.velocityY;
+				if (
+					(this.y + this.velocityY > properties.h && this.velocityY > 0) ||
+					(this.y + this.velocityY < 0 && this.velocityY < 0)
+				) {
+					this.velocityY *= -1;
+				}
 
 				this.x += this.velocityX;
 				this.y += this.velocityY;
+			}
+
+			// При клике на документ ускоряем точки
+			reDrawOnClick() {
+				this.velocityX *= properties.acceleration;
+				this.velocityY *= properties.acceleration;
+
+				// И возвращаем скорость через секунду
+				setTimeout(() => {
+					this.velocityX /= properties.acceleration;
+					this.velocityY /= properties.acceleration;
+				}, 1000);
 			}
 
 			reDraw() {
@@ -105,15 +139,13 @@ const Canvas: React.FC = () => {
 					x2 = particles[j].x;
 					y1 = particles[i].y;
 					y2 = particles[j].y;
+					// Формула нахождение диогонали
 					length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
 					if (length < properties.lineLength) {
 						opacity = 1 - length / properties.lineLength;
 						ctx.lineWidth = 2;
-						ctx.strokeStyle =
-							localStorage.getItem("theme") === "light"
-								? `rgba(253, 33, 85, ${+opacity})`
-								: `rgba(8, 253, 216, ${+opacity})`;
+						ctx.strokeStyle = getColor(opacity);
 						ctx.beginPath();
 						ctx.moveTo(x1, y1);
 						ctx.lineTo(x2, y2);
@@ -121,6 +153,13 @@ const Canvas: React.FC = () => {
 						ctx.stroke();
 					}
 				}
+			}
+		};
+
+		const clickHandler = (e: MouseEvent) => {
+			for (let i = 0; i < particles.length; i++) {
+				const particle = particles[i];
+				particle.reDrawOnClick();
 			}
 		};
 
@@ -147,6 +186,7 @@ const Canvas: React.FC = () => {
 				particles.push(new Particle());
 			}
 
+			document.addEventListener("click", clickHandler);
 			loop();
 		};
 

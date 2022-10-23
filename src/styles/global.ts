@@ -114,4 +114,8 @@ export const GlobalStyles = createGlobalStyle`
             padding: 0px 0px 0px 130px;
         }
     }
+
+    *::selection {
+        background-color: #4444444f;
+    }
 `;
