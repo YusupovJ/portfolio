@@ -7,24 +7,22 @@ interface PropTypes {
 
 export const Wrapper = styled.div`
 	width: 100%;
-	position: relative;
 	margin: 15px 0px;
-	padding-bottom: 75%;
+	transform: translate(-35px, 0);
+
+	@media only screen and (max-width: ${em(424.98)}) {
+		transform: translate(-11px, 0);
+	}
 `;
 
 export const Row = styled.ul<PropTypes>`
-	position: absolute;
 	width: calc(100vw - 130px - ${(props) => props.scrollWidth}px);
 	height: 100%;
 	top: 0;
-	left: -35px;
 	display: flex;
 	flex-wrap: wrap;
 	@media only screen and (max-width: ${em(991.98)}) {
 		width: calc(100vw - ${(props) => props.scrollWidth}px);
-	}
-	@media only screen and (max-width: ${em(424.98)}) {
-		left: -11px;
 	}
 `;
 

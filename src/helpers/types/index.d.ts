@@ -18,3 +18,9 @@ export interface IWork {
 	link: string;
 	preview: StaticImageData;
 }
+
+export interface ISkills {
+	id: number;
+	link: string;
+	title: string;
+}
