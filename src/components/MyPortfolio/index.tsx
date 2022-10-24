@@ -5,13 +5,14 @@ import { Button } from "src/shared/UI";
 import Article from "../Article";
 import Section from "../Section";
 import { Wrapper } from "./style";
+import Works from "./Works";
 
 interface Props {}
 
 const MyPortfolio: React.FC<Props> = (props) => {
 	return (
 		<Wrapper>
-			<Section>
+			<Section bg="Work" position={["right", "top"]}>
 				<Article title="My Portfolio">
 					A small gallery of recent projects chosen by me. I've done them all together with amazing people
 					from companies <br /> around the globe. It's only a drop in the ocean compared to the entire list.
@@ -21,6 +22,7 @@ const MyPortfolio: React.FC<Props> = (props) => {
 				<Fade direction="left" duration={700}>
 					<Button className="see-more">See more</Button>
 				</Fade>
+				<Works />
 			</Section>
 		</Wrapper>
 	);

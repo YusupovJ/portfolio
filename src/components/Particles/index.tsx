@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 	overflow: hidden;
 	left: 0;
 	z-index: -1;
+	width: 100%;
 	filter: brightness(80%);
 `;
 
@@ -46,7 +47,7 @@ const Canvas: React.FC = () => {
 			count: document.documentElement.clientWidth > 574.98 ? 100 : 40,
 			velocity: 0.7,
 			w: document.documentElement.clientWidth,
-			h: document.documentElement.clientHeight,
+			h: 720,
 			lineLength: 150,
 			clickDistance: 50,
 			acceleration: 2,
@@ -57,13 +58,12 @@ const Canvas: React.FC = () => {
 		// Размеры холста
 		const setScale = () => {
 			canvas.width = document.documentElement.clientWidth;
-			canvas.height = document.documentElement.clientHeight;
 			properties.w = document.documentElement.clientWidth;
-			properties.h = document.documentElement.clientHeight;
 		};
 
 		window.addEventListener("resize", setScale);
 		setScale();
+		canvas.height = properties.h;
 
 		/* ------------------------------------ */
 

@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { ReactElement } from "react";
 
 export interface INavbar {
@@ -10,4 +11,10 @@ export interface ILinks {
 	id: number;
 	icon: ReactElement;
 	href: string;
+}
+
+export interface IWork {
+	id: number;
+	link: string;
+	preview: StaticImageData;
 }

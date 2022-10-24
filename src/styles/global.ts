@@ -6,6 +6,8 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         border: 0;
+        scrollbar-width: thin;
+        scrollbar-color: ${(props) => props.theme.colors.bgSecondary} #44444446;
     }
 
     *,
@@ -22,6 +24,24 @@ export const GlobalStyles = createGlobalStyle`
     a:focus,
     a:active {
         outline: none;
+    }
+
+    *::selection {
+        background-color: #44444446;
+    }
+
+    *::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    *::-webkit-scrollbar-track {
+        background-color: ${(props) => props.theme.colors.bgSecondary};   
+        border-radius: ${(props) => props.theme.borderRad};
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background-color: #44444446;   
     }
 
     nav,
@@ -78,17 +98,6 @@ export const GlobalStyles = createGlobalStyle`
         resize: none;
     }
 
-    body {
-        font-family: "Open Sans", sans-serif;
-        color: ${(props) => props.theme.colors.text};
-        background-color: ${(props) => props.theme.colors.bg};
-        transition: background-color 0.3s;
-        scrollbar-width: thin;
-        overflow-x: hidden;
-        height: 100vw;
-        scrollbar-color: ${(props) => props.theme.colors.bgSecondary} #44444446;
-    }
-
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         appearance: none;
@@ -101,6 +110,23 @@ export const GlobalStyles = createGlobalStyle`
         transition: background-color 600000s 0s, color 600000s 0s;
     }
 
+    body {
+        font-family: "Open Sans", sans-serif;
+        color: ${(props) => props.theme.colors.text};
+        background-color: ${(props) => props.theme.colors.bg};
+        transition: background-color 0.3s;
+    }
+
+    #__next {
+        overflow: hidden;
+    }
+
+    @media only screen and (min-width: ${em(991.98)}){
+        body {
+            padding: 0px 0px 0px 130px;
+        }
+    }
+
     @font-face {
         font-family: Coolvetica;
         src: url("/fonts/Coolvetica.ttf") format("truetype");
@@ -111,28 +137,5 @@ export const GlobalStyles = createGlobalStyle`
         font-family: LaBelleAurore;
         src: url("/fonts/LaBelleAurore.woff2") format("woff2");
         font-weight: 400;
-    }
-
-    @media only screen and (min-width: ${em(991.98)}){
-        body {
-            padding: 0px 0px 0px 130px;
-        }
-    }
-
-    *::selection {
-        background-color: #44444446;
-    }
-
-    body::-webkit-scrollbar {
-        width: 10px;
-    }
-    
-    body::-webkit-scrollbar-track {
-        background-color: ${(props) => props.theme.colors.bgSecondary};   
-        border-radius: ${(props) => props.theme.borderRad};
-    }
-    
-    body::-webkit-scrollbar-thumb {
-        background-color: #44444446;   
     }
 `;

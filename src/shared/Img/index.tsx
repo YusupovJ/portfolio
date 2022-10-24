@@ -8,7 +8,7 @@ const Img: React.FC<ImageProps> = (props) => {
 	const [error, setError] = useState<boolean>(false);
 	const [loaded, setLoaded] = useState<boolean>(false);
 
-	const handleLoad = (event: any) => {
+	const handleLoad = () => {
 		setLoaded(true);
 	};
 

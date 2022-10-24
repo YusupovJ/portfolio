@@ -1,5 +1,5 @@
-import { em, per } from "helpers/functions";
 import styled from "styled-components";
+import { em } from "src/helpers/functions";
 
 interface ErrorProps {
 	maxWidth?: number | string;
