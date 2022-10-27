@@ -27,7 +27,7 @@ export const Row = styled.ul<PropTypes>`
 `;
 
 export const Work = styled.li<PropTypes>`
-	min-height: 300px;
+	height: 20vw;
 	flex: 1 1 250px;
 	transition: all 0.5s ease 0s;
 	position: relative;
@@ -80,5 +80,8 @@ export const Work = styled.li<PropTypes>`
 	}
 	@media only screen and (min-width: ${em(1439.98)}) {
 		flex: 1 1 20vw;
+	}
+	@media only screen and (max-width: ${em(1239.98)}) {
+		height: 250px;
 	}
 `;

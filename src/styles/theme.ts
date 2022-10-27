@@ -11,6 +11,7 @@ export const lightTheme: DefaultTheme = {
 		text: "",
 		textSecondary: "",
 		tag: "",
+		bgThird: "",
 	},
 };
 
@@ -25,5 +26,6 @@ export const darkTheme: DefaultTheme = {
 		text: "#ffffff",
 		textSecondary: "#8d8d8d",
 		tag: "#515152",
+		bgThird: "#2B2B2B",
 	},
 };

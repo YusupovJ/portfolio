@@ -1,5 +1,5 @@
 import React, { Dispatch, forwardRef, memo, SetStateAction, useState } from "react";
-import { ErrorText, Field, PasswordVisibilityToggler, Wrapper } from "./style";
+import { ErrorText, Field, PasswordVisibilityToggler, TextAreaField, Wrapper } from "./style";
 import EyeVisible from "src/assets/svg/EyeVisible.svg";
 import EyeInvisible from "src/assets/svg/EyeInvisible.svg";
 
@@ -7,8 +7,9 @@ type validateInput = (target: EventTarget & HTMLInputElement, setError: Dispatch
 
 interface PropTypes extends React.ComponentPropsWithoutRef<"input"> {
 	error?: string;
-	variant: "text" | "number" | "email" | "password";
+	variant?: "text" | "number" | "email" | "password";
 	validate?: "email" | "password" | validateInput;
+	textArea?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, PropTypes>((props, ref) => {
@@ -74,20 +75,25 @@ const Input = forwardRef<HTMLInputElement, PropTypes>((props, ref) => {
 
 	return (
 		<Wrapper className={props.className}>
-			<Field
-				{...props}
-				onBlur={validate}
-				data-error={error && "error"}
-				type={props.variant}
-				visible={passwordVisible}
-				ref={ref}
-				className=""
-			/>
+			{props.textArea ? (
+				<TextAreaField placeholder={props.placeholder} name={props.name}></TextAreaField>
+			) : (
+				<Field
+					{...props}
+					onBlur={validate}
+					data-error={error && "error"}
+					type={props.variant}
+					visible={passwordVisible}
+					ref={ref}
+					className=""
+				/>
+			)}
 			{props.variant === "password" && (
 				<PasswordVisibilityToggler type="button" onClick={togglePasswordVisible}>
 					{passwordVisible ? <EyeInvisible /> : <EyeVisible />}
 				</PasswordVisibilityToggler>
 			)}
+			<span className="line"></span>
 			<ErrorText>{error}</ErrorText>
 		</Wrapper>
 	);

@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         border: 0;
         scrollbar-width: thin;
-        scrollbar-color: ${(props) => props.theme.colors.bgSecondary} #44444446;
+        scrollbar-color: ${(props) => props.theme.colors.bgSecondary} ${(props) => props.theme.colors.bgThird};
     }
 
     *,
@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     *::selection {
-        background-color: #44444446;
+        background-color: ${(props) => props.theme.colors.bgThird};
     }
 
     *::-webkit-scrollbar {
@@ -41,7 +41,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     *::-webkit-scrollbar-thumb {
-        background-color: #44444446;   
+        background-color: ${(props) => props.theme.colors.bgThird};   
     }
 
     nav,

@@ -8,6 +8,7 @@ interface PropTypes {
 	gap?: number;
 	noWriteTag?: boolean;
 	dblGap?: boolean;
+	className?: string;
 }
 
 interface IStyleProps {
@@ -55,7 +56,12 @@ const Tag: React.FC<PropTypes> = (props) => {
 
 	return (
 		<Wrapper gap={props.gap} tagName={props.tagName} dblGap={props.dblGap}>
-			{loaded && React.createElement(props.noWriteTag ? "div" : props.tagName, {}, props.children)}
+			{loaded &&
+				React.createElement(
+					props.noWriteTag ? "div" : props.tagName,
+					{ className: props.className },
+					props.children
+				)}
 		</Wrapper>
 	);
 };

@@ -2,46 +2,63 @@ import { rem } from "src/helpers/functions";
 import styled, { css } from "styled-components";
 
 interface PropTypes {
-	variant: "text" | "number" | "email" | "password";
+	variant?: "text" | "number" | "email" | "password";
 	visible?: boolean;
 }
 
 const errorStyles = css`
-	border: 1px solid ${({ theme }) => theme.colors.error};
-	box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.error};
+	border: 1px solid red;
+	box-shadow: 0px 0px 5px red;
 `;
 
 const focusStyles = css`
-	box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.primary};
+	+ .line {
+		width: 100%;
+	}
 `;
 
-export const Field = styled.input<PropTypes>`
-	border: 1px solid ${({ theme }) => theme.colors.primary};
-	padding: 5px 10px;
+const basicStyled = css`
+	padding: 10px 15px;
+	background-color: ${(props) => props.theme.colors.bgThird};
 	transition: all 0.3s ease 0s;
 	display: inline-block;
 	width: 100%;
 	min-width: 220px;
-	background-color: transparent;
-	color: ${(props) => props.theme.colors.text};
+	color: ${(props) => props.theme.colors.textSecondary};
 	border-radius: ${({ theme }) => theme.borderRad};
+	font-size: ${rem(18)};
 	&[data-error="error"] {
 		${errorStyles}
-	}
-	&[type="number"] {
-		padding: 5px 25px 5px 10px;
-	}
-	&::placeholder {
-		font-family: monospace;
 	}
 	&:focus {
 		${focusStyles}
 	}
 `;
 
+export const Field = styled.input<PropTypes>`
+	${basicStyled}
+`;
+
+export const TextAreaField = styled.textarea`
+	min-height: 230px;
+	${basicStyled}
+`;
+
 export const Wrapper = styled.div`
 	position: relative;
 	display: inline-block;
+	position: relative;
+	width: 100%;
+	.line {
+		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transition: all 0.3s ease 0s;
+		width: 0;
+		height: 2px;
+		background-color: ${(props) => props.theme.colors.primary};
+	}
 `;
 
 export const PasswordVisibilityToggler = styled.button`
@@ -56,7 +73,7 @@ export const ErrorText = styled.p`
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	color: ${({ theme }) => theme.colors.error};
+	color: red;
 	transform: translate(0, 120%);
 	font-weight: 300;
 	font-size: ${rem(12)};

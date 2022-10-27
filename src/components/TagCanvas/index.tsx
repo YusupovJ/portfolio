@@ -7,12 +7,11 @@ const TagsCanvas: React.FC = () => {
 	const height = window.innerHeight > 982 ? window.innerHeight / 2 : window.innerHeight / 1.1;
 
 	const settings = JSON.stringify({
-		textFont: "Coolvetica",
 		textColour: "#08fdd8",
 		outlineIncrease: 10,
-		textHeight: 25,
+		textHeight: 20,
 		minBrightness: 0.2,
-		depth: 1,
+		depth: 0.7,
 		initial: [0.2, -0.2],
 		pulsateTo: 0.6,
 		hideTags: false,

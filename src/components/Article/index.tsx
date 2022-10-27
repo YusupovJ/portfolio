@@ -7,6 +7,7 @@ import { Wrapper } from "./style";
 interface Props {
 	title: string;
 	children: React.ReactNode;
+	className?: string;
 }
 
 const Article: React.FC<Props> = (props) => {
@@ -14,7 +15,9 @@ const Article: React.FC<Props> = (props) => {
 		<Wrapper>
 			<Title h={2}>{props.title}</Title>
 			<Fade direction="left" duration={700}>
-				<Tag tagName="p">{props.children}</Tag>
+				<Tag className={props.className} tagName="p">
+					{props.children}
+				</Tag>
 			</Fade>
 		</Wrapper>
 	);

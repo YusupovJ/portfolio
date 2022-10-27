@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
 		flex: 1 1 45%;
 	}
 	#myCanvas {
-		max-width: 1000px;
 		width: 100%;
 		position: relative;
 		transform: translate(-25px, 0);
@@ -22,6 +21,9 @@ export const Wrapper = styled.div`
 		flex-direction: column;
 		> * {
 			flex: 1 1 auto;
+		}
+		#myCanvas {
+			transform: translate(0, 0);
 		}
 	}
 `;

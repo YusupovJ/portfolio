@@ -12,6 +12,7 @@ declare module "styled-components" {
 			bgSecondary: string;
 			textSecondary: string;
 			tag: string;
+			bgThird: string;
 		};
 	}
 }

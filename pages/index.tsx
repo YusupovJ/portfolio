@@ -5,6 +5,7 @@ import Home from "src/components/Home";
 import MyPortfolio from "src/components/MyPortfolio";
 import Particles from "src/components/Particles";
 import About from "src/components/About";
+import ContactMe from "src/components/ContactMe";
 
 const HomePage: NextPage = () => {
 	return (
@@ -18,6 +19,7 @@ const HomePage: NextPage = () => {
 				<Home />
 				<MyPortfolio />
 				<About />
+				<ContactMe />
 			</Page>
 		</>
 	);
