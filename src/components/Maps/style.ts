@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 	flex: 1 1 auto;
+	div {
+		width: 100%;
+		height: 100%;
+	}
 	[class*="ground-pane"] {
 		filter: grayscale(1) brightness(35%);
 	}

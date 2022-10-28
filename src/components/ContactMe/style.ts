@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
 	display: flex;
 	gap: 40px;
+	justify-content: space-between;
 	> div {
 		max-width: 50%;
 	}
