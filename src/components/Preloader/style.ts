@@ -19,6 +19,7 @@ const closing = keyframes`
 
 interface PropTypes {
 	active: boolean;
+	status?: "pending" | "start" | "complete";
 }
 
 export const Wrapper = styled.div<PropTypes>`
@@ -60,9 +61,16 @@ export const ProgressBar = styled.div<PropTypes>`
 	overflow: hidden;
 	background-color: ${(props) => props.theme.colors.bgSecondary};
 	div {
-		/* +props.active - либо 0, либо 1 */
-		width: ${(props) => +props.active * 100 + "%"};
-		transition: width 1s ease 0.5s;
+		width: ${({ status }) => {
+			if (status === "start") {
+				return "0%";
+			} else if (status === "pending") {
+				return "80%";
+			} else if (status === "complete") {
+				return "100%";
+			}
+		}};
+		transition: width ${({ status }) => (status === "complete" ? "0.3s" : "2s")} ease 0.5s;
 		height: 100%;
 		background: rgb(8, 253, 216);
 		background: linear-gradient(

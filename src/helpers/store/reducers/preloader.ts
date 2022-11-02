@@ -1,17 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface IInitial {
+	active: boolean;
+	status: "start" | "pending" | "complete";
+}
+
 const preloader = createSlice({
 	name: "preloader",
-	initialState: { active: false, closed: false },
+	initialState: { active: false, status: "start" } as IInitial,
 	reducers: {
-		show(state) {
+		showPreloader(state) {
 			state.active = true;
 		},
-		hide(state) {
+		hidePreloader(state) {
 			state.active = false;
+		},
+		changeStatus(state, { payload }) {
+			state.status = payload;
 		},
 	},
 });
 
-export const { show, hide } = preloader.actions;
+export const { showPreloader, hidePreloader, changeStatus } = preloader.actions;
 export default preloader.reducer;

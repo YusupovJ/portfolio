@@ -5,14 +5,14 @@ import { Logo, ProgressBar, Wrapper } from "./style";
 interface Props {}
 
 const Preloader: React.FC<Props> = (props) => {
-	const active = useAppSelector((state) => state.preloader.active);
+	const preloader = useAppSelector((state) => state.preloader);
 
 	return (
-		<Wrapper active={active}>
+		<Wrapper active={preloader.active}>
 			<Logo />
 			<h4>Jamshid</h4>
 			<p>Jamshid is thinking</p>
-			<ProgressBar active={active}>
+			<ProgressBar active={preloader.active} status={preloader.status}>
 				<div></div>
 			</ProgressBar>
 		</Wrapper>
