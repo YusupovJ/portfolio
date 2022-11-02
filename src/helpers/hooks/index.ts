@@ -13,14 +13,16 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 // Хук для сетевого запроса
 
 type methodType = "GET" | "POST" | "PUT" | "DELETE";
-type statusType = "loading" | "success" | "error";
+type statusType = "loading" | "success" | "error" | "";
 
 export const useAsync = <T, U>(url: string, method: methodType, contentType: string) => {
 	const [response, setResponse] = useState<U | null>(null);
 	const [error, setError] = useState<string>("");
-	const [status, setStatus] = useState<statusType>("loading");
+	const [status, setStatus] = useState<statusType>("");
 
 	const send = (body: T): void => {
+		setStatus("loading");
+
 		fetch(url, {
 			method,
 			headers: {
@@ -28,7 +30,22 @@ export const useAsync = <T, U>(url: string, method: methodType, contentType: str
 			},
 			body: JSON.stringify(body),
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				function IsJsonString(str: any) {
+					try {
+						JSON.parse(str);
+					} catch (e) {
+						return false;
+					}
+					return true;
+				}
+
+				if (IsJsonString(res)) {
+					return res.json();
+				} else {
+					return res;
+				}
+			})
 			.then((response) => {
 				setResponse(response);
 				setStatus("success");

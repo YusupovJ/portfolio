@@ -18,7 +18,7 @@ const ThemeController = (props: PropTypes) => {
 		if (props.ocTheme) {
 			dispatch(setOCTheme());
 		}
-	}, []);
+	}, [dispatch, props.ocTheme]);
 
 	return <ThemeProvider theme={state === "light" ? lightTheme : darkTheme}>{props.children}</ThemeProvider>;
 };

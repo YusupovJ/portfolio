@@ -35,7 +35,8 @@ const TagsCanvas: React.FC = () => {
 		  catch(e) {
 			document.getElementById('myCanvasContainer').style.display = 'none';
 		  }`);
-	}, []);
+	}, [settings]);
+
 	return (
 		<Fade>
 			<div id="myCanvasContainer">
@@ -45,7 +46,7 @@ const TagsCanvas: React.FC = () => {
 						{skills.map((skill) => {
 							return (
 								<li key={skill.id}>
-									<a href={skill.link} target="_blank">
+									<a href={skill.link} target="_blank" rel="noreferrer">
 										{skill.title}
 									</a>
 								</li>

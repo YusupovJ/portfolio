@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React, { Dispatch, memo, SetStateAction } from "react";
+import Link from "src/components/Link";
 import { navbar } from "src/helpers/utils/navbar";
 import { Wrapper } from "./style";
 
@@ -12,7 +12,7 @@ const Navbar: React.FC<Props> = ({ closeMenuOnRedirect }) => {
 		<Wrapper>
 			{navbar.map((link) => {
 				return (
-					<Link key={link.id} href={link.href}>
+					<Link key={link.id} href={link.href} className="link" onClick={closeMenuOnRedirect}>
 						{link.title}
 					</Link>
 				);

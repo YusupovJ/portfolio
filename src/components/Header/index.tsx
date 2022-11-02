@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Links from "./Links";
 import { useRouter } from "next/router";
 import { bodyGapToggle } from "src/helpers/functions";
+import Link from "../Link";
 
 interface Props {}
 
@@ -33,16 +34,11 @@ const Header: React.FC<Props> = (props) => {
 			</Toggler>
 			<Wrapper className={menuVisible ? "open" : ""}>
 				<Title>
-					<div
-						onClick={() => {
-							router.push("/");
-							closeMenuOnRedirect();
-						}}
-					>
+					<Link href="/" onClick={closeMenuOnRedirect}>
 						<Logo></Logo>
 						<h3>Jamshid</h3>
-					</div>
-					<span>Web Developer</span>
+						<span>Web Developer</span>
+					</Link>
 				</Title>
 				<Navbar closeMenuOnRedirect={closeMenuOnRedirect} />
 				<Links />

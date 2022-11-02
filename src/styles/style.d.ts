@@ -13,6 +13,8 @@ declare module "styled-components" {
 			textSecondary: string;
 			tag: string;
 			bgThird: string;
+			selection: string;
+			active: string;
 		};
 	}
 }

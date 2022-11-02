@@ -29,7 +29,7 @@ export const Title = styled.div`
 	width: 100%;
 	padding: 20px 0px;
 	background-color: #000000;
-	div {
+	button {
 		cursor: pointer;
 	}
 
@@ -42,11 +42,13 @@ export const Title = styled.div`
 		font-size: ${rem(20)};
 		font-family: ${(props) => props.theme.secondaryFont};
 		margin: 5px 20px;
+		color: ${(props) => props.theme.colors.text};
 	}
 
 	span {
 		display: inline-block;
 		font-size: ${rem(12)};
+		color: ${(props) => props.theme.colors.text};
 	}
 `;
 

@@ -1,4 +1,5 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -19,7 +20,7 @@ class MyDocument extends Document {
 					<Main />
 					<NextScript />
 				</body>
-				<script src="/js/script.js"></script>
+				<script src="/js/tagcanvas.js"></script>
 			</Html>
 		);
 	}

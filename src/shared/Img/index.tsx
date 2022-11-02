@@ -26,7 +26,7 @@ const Img: React.FC<ImageProps> = (props) => {
 
 	return (
 		<Wrapper>
-			<Image {...props} onLoad={handleLoad} onError={handleError} />
+			<Image {...props} onLoad={handleLoad} onError={handleError} alt="" />
 			{!loaded && <Loader />}
 		</Wrapper>
 	);

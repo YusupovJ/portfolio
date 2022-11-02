@@ -7,8 +7,10 @@ interface PropTypes {
 }
 
 const errorStyles = css`
-	border: 1px solid red;
-	box-shadow: 0px 0px 5px red;
+	& + .line {
+		width: 100% !important;
+		background-color: red !important;
+	}
 `;
 
 const focusStyles = css`

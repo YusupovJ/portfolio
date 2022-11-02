@@ -15,7 +15,7 @@ export const navbar: INavbar[] = [
 	{
 		id: 3,
 		title: "Work",
-		href: "/work",
+		href: "/works",
 	},
 	{
 		id: 4,

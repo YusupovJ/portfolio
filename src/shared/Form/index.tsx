@@ -40,6 +40,8 @@ const Form: React.FC<PropTypes> = ({ submit, children, ...props }) => {
 		if (formRef.current) {
 			const children: HTMLInputElement[] = Array.from(formRef.current.querySelectorAll("input[required]"));
 
+			console.log(children);
+
 			for (const child of children) {
 				if (!child.value) {
 					child.dataset.error = "error";
@@ -51,6 +53,8 @@ const Form: React.FC<PropTypes> = ({ submit, children, ...props }) => {
 	};
 
 	const handleSubmit = async (event: React.FormEvent) => {
+		event.preventDefault();
+
 		const valid = await checkValid();
 		const values = await getValues();
 		const noValues = await handleNoValues();
@@ -58,8 +62,6 @@ const Form: React.FC<PropTypes> = ({ submit, children, ...props }) => {
 		if (valid && noValues) {
 			submit(values);
 		}
-
-		event.preventDefault();
 	};
 
 	return (

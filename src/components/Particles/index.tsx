@@ -190,7 +190,7 @@ const Canvas: React.FC = () => {
 
 	return (
 		<Wrapper>
-			<canvas id="particles">Your browser doesn't support a canvas</canvas>
+			<canvas id="particles">Your browser does not support a canvas</canvas>
 		</Wrapper>
 	);
 };

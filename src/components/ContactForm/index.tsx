@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { Fade } from "react-awesome-reveal";
+import { useAsync } from "src/helpers/hooks";
 import Form from "src/shared/Form";
 import { Button, Input } from "src/shared/UI";
 import Tag from "../Tag";
@@ -7,13 +8,29 @@ import { Wrapper } from "./style";
 
 interface Props {}
 
+const URL = "https://api.emailjs.com/api/v1.0/email/send";
+
 const ContactForm: React.FC<Props> = (props) => {
+	const { send, status, error } = useAsync(URL, "POST", "application/json");
+
+	const submit = (values: any) => {
+		send({
+			template_id: process.env.template_id,
+			user_id: process.env.user_id,
+			service_id: process.env.service_id,
+			template_params: {
+				...values,
+				send_to: "jamshudanamana@gmail.com",
+			},
+		});
+	};
+
 	return (
 		<Wrapper>
 			<Tag tagName="form" noWriteTag>
-				<Form className="form-wrapper" submit={(values) => {}}>
+				<Form className="form-wrapper" submit={submit}>
 					<Fade direction="up" className="form-input">
-						<Input variant="text" placeholder="Name" name="name" />
+						<Input required variant="text" placeholder="Name" name="name" />
 					</Fade>
 
 					<Fade direction="up" className="form-input">
@@ -21,7 +38,7 @@ const ContactForm: React.FC<Props> = (props) => {
 					</Fade>
 					<Fade direction="up" className="form-textarea">
 						<Input placeholder="Message" name="message" textArea />
-						<Button>Send message</Button>
+						<Button status={status}>Send message</Button>
 					</Fade>
 				</Form>
 			</Tag>

@@ -10,10 +10,10 @@ interface Props {}
 const ContactMe: React.FC<Props> = (props) => {
 	return (
 		<Wrapper>
-			<Section className="contact-section" bg="Contact" position={["right", "top"]}>
+			<Section className="contact-section" bg="Contact" position={["left", "top"]}>
 				<Article title="Contact me">
-					I'm interested in freelance opportunities – especially ambitious or large projects. However, if you
-					have other request or question, don't hesitate to use the form.
+					I am interested in freelance opportunities – especially ambitious or large projects. However, if you
+					have other request or question, do not hesitate to use the form.
 				</Article>
 				<ContactForm />
 			</Section>

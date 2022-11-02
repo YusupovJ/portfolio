@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	align-items: stretch;
 	flex: 1 1 auto;
 	width: 100%;
-	a {
+	.link {
 		line-height: 3rem;
 		border-bottom: 1px solid #282828;
 		color: ${({ theme }) => theme.colors.textSecondary};

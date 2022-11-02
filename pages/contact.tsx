@@ -7,7 +7,7 @@ const ContactPage: NextPage = () => {
 	return (
 		<Page>
 			<Head>
-				<title>JY | About</title>
+				<title>JY | Contact Me</title>
 			</Head>
 			<ContactMe />
 		</Page>

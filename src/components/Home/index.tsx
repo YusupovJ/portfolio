@@ -13,7 +13,7 @@ const Home: React.FC<Props> = (props) => {
 
 	return (
 		<Wrapper>
-			<Title h={1}>Hi,%I'm *amshid%web developer</Title>
+			<Title h={1}>Hi,%I am *amshid%web developer</Title>
 			<Fade className="text" direction="up" delay={500}>
 				<Tag tagName="p">Front End Developer / ReactTS Expert</Tag>
 			</Fade>

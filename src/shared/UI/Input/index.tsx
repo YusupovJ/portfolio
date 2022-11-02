@@ -73,14 +73,22 @@ const Input = forwardRef<HTMLInputElement, PropTypes>((props, ref) => {
 		}
 	};
 
+	const blurHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+		validate(event);
+
+		if (event.target.dataset.error === "error") {
+			event.target.dataset.error = "";
+		}
+	};
+
 	return (
 		<Wrapper className={props.className}>
 			{props.textArea ? (
-				<TextAreaField placeholder={props.placeholder} name={props.name}></TextAreaField>
+				<TextAreaField placeholder={props.placeholder} name={props.name} />
 			) : (
 				<Field
 					{...props}
-					onBlur={validate}
+					onBlur={blurHandler}
 					data-error={error && "error"}
 					type={props.variant}
 					visible={passwordVisible}

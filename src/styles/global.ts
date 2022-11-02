@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     *::selection {
-        background-color: ${(props) => props.theme.colors.bgThird};
+        background-color: ${(props) => props.theme.colors.selection};
     }
 
     *::-webkit-scrollbar {
@@ -60,6 +60,7 @@ export const GlobalStyles = createGlobalStyle`
 
     button {
         cursor: pointer;
+        background-color: transparent;
     }
 
     button::-moz-focus-inner {
@@ -120,6 +121,20 @@ export const GlobalStyles = createGlobalStyle`
     #__next {
         overflow: hidden;
     }
+
+    a:focus {
+        color: ${(props) => props.theme.colors.active};
+        fill: ${(props) => props.theme.colors.active};
+    }
+
+    /* делаем темными yandex карты  */
+    [class*="ground-pane"] {
+	    filter: grayscale(1) brightness(55%);
+	}
+
+	[class*="copyrights-pane"] {
+		display: none;
+	}
 
     @media only screen and (min-width: ${em(991.98)}){
         body {

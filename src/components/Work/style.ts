@@ -1,34 +1,6 @@
-import { em } from "src/helpers/functions";
 import styled from "styled-components";
 
-interface PropTypes {
-	scrollWidth: number;
-}
-
 export const Wrapper = styled.div`
-	width: 100%;
-	margin: 15px 0px;
-	transform: translate(-35px, 0);
-
-	@media only screen and (max-width: ${em(424.98)}) {
-		transform: translate(-11px, 0);
-	}
-`;
-
-export const Row = styled.ul<PropTypes>`
-	width: calc(100vw - 130px - ${(props) => props.scrollWidth}px);
-	height: 100%;
-	top: 0;
-	display: flex;
-	flex-wrap: wrap;
-	@media only screen and (max-width: ${em(991.98)}) {
-		width: calc(100vw - ${(props) => props.scrollWidth}px);
-	}
-`;
-
-export const Work = styled.li<PropTypes>`
-	height: 20vw;
-	flex: 1 1 250px;
 	transition: all 0.5s ease 0s;
 	position: relative;
 	overflow: hidden;
@@ -52,10 +24,10 @@ export const Work = styled.li<PropTypes>`
 		color: ${(props) => props.theme.colors.tag};
 		z-index: 2;
 		transform: translate(-50%, -50%) scale(0);
-		transition: all 0.5s ease 0s;
+		transition: all 0.3s ease 0s;
 	}
 	img {
-		transition: all 0.5s ease 0s;
+		transition: all 0.3s ease 0s;
 		filter: brightness(65%);
 		position: absolute;
 		width: 100%;
@@ -75,13 +47,17 @@ export const Work = styled.li<PropTypes>`
 		}
 	}
 
+	a:focus {
+		&::before {
+			transform: translate(-50%, -50%) scale(1);
+		}
+		img {
+			filter: brightness(100%);
+			transform: scale(1.2);
+		}
+	}
+
 	span {
 		position: static !important;
-	}
-	@media only screen and (min-width: ${em(1439.98)}) {
-		flex: 1 1 20vw;
-	}
-	@media only screen and (max-width: ${em(1239.98)}) {
-		height: 250px;
 	}
 `;

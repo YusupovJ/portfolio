@@ -42,4 +42,14 @@ export const works: IWork[] = [
 		link: "https://jamshud-houzing.netlify.com",
 		preview: houzingImg,
 	},
+	{
+		id: 9,
+		link: "https://jamshud-houzing.netlify.com",
+		preview: houzingImg,
+	},
+	{
+		id: 10,
+		link: "https://jamshud-houzing.netlify.com",
+		preview: houzingImg,
+	},
 ];

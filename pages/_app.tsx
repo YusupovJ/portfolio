@@ -4,6 +4,7 @@ import { GlobalStyles } from "src/styles";
 import ThemeController from "src/shared/ThemeController";
 import store from "src/helpers/store";
 import Header from "src/components/Header";
+import Preloader from "src/components/Preloader";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<GlobalStyles />
 				<div style={{ display: "flex" }}>
 					<Header />
+					<Preloader />
 					<Component {...pageProps} />
 				</div>
 			</ThemeController>
