@@ -9,6 +9,7 @@ interface Props {
 const Main = styled.main`
 	padding: 20px 0px 20px 5px;
 	width: 100%;
+	min-height: 100vh;
 `;
 
 const Page: React.FC<Props> = (props) => {

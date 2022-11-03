@@ -14,38 +14,36 @@ const Link: React.FC<Props> = (props) => {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 
-	const handleClick = () => {
-		dispatch(showPreloader());
-		dispatch(changeStatus("pending"));
+	const handleClick = (event: React.MouseEvent) => {
+		event.preventDefault();
 
-		setTimeout(() => {
-			router.push(props.href);
+		if (props.href !== router.pathname) {
+			dispatch(showPreloader());
+			dispatch(changeStatus("pending"));
 
-			router.events.on("routeChangeComplete", () => {
-				dispatch(changeStatus("complete"));
+			setTimeout(() => {
+				router.push(props.href);
 
-				setTimeout(() => {
-					dispatch(hidePreloader());
-				}, 1000);
+				router.events.on("routeChangeComplete", () => {
+					dispatch(changeStatus("complete"));
 
-				setTimeout(() => {
-					dispatch(changeStatus("start"));
-				}, 1000);
-			});
-		}, 1000);
-		if (props.onClick) {
-			props.onClick(false);
+					setTimeout(() => {
+						dispatch(hidePreloader());
+						dispatch(changeStatus("start"));
+					}, 1000);
+				});
+			}, 1000);
+
+			if (props.onClick) {
+				props.onClick(false);
+			}
 		}
 	};
 
 	return (
-		<button
-			type="button"
-			className={props.className}
-			onClick={router.pathname !== props.href ? handleClick : () => {}}
-		>
+		<a href={props.href} className={props.className} onClick={handleClick}>
 			{props.children}
-		</button>
+		</a>
 	);
 };
 

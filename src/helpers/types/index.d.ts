@@ -24,3 +24,9 @@ export interface ISkills {
 	link: string;
 	title: string;
 }
+
+export interface ISkillsDetails {
+	id: number;
+	title: string;
+	percent: number;
+}
