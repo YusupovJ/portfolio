@@ -12,12 +12,10 @@ interface Props {
 
 const Article: React.FC<Props> = (props) => {
 	return (
-		<Wrapper>
+		<Wrapper className={props.className}>
 			<Title h={2}>{props.title}</Title>
 			<Fade direction="left" duration={700}>
-				<Tag className={props.className} tagName="p">
-					{props.children}
-				</Tag>
+				<Tag tagName="p">{props.children}</Tag>
 			</Fade>
 		</Wrapper>
 	);

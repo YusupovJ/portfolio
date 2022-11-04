@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { NextPage } from "next";
+import MagicWall from "src/components/MagicWall";
 
 const HomePage: NextPage = () => {
 	return (
@@ -7,6 +8,7 @@ const HomePage: NextPage = () => {
 			<Head>
 				<title>JY | Frontend Developer</title>
 			</Head>
+			<MagicWall />
 		</>
 	);
 };

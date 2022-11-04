@@ -7,16 +7,17 @@ import { Wrapper } from "./style";
 interface Props {
 	link: string;
 	preview: StaticImageData;
+	className?: string;
 }
 
 const Work: React.FC<Props> = (props) => {
 	return (
-		<Wrapper>
-			<Fade>
-				<a href={props.link} target="_blank" rel="noreferrer">
-					<Img src={props.preview} />
-				</a>
-			</Fade>
+		<Wrapper className={props.className}>
+			{/* <Fade> */}
+			<a href={props.link} target="_blank" rel="noreferrer">
+				<Img src={props.preview} />
+			</a>
+			{/* </Fade> */}
 		</Wrapper>
 	);
 };
