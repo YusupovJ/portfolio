@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { em } from "src/helpers/functions";
 
-interface ErrorProps {
+interface ErrorPropTypes {
 	maxWidth?: number | string;
 	maxHeight?: number | string;
 }
 
-export const Wrapper = styled.div``;
-
-export const Error = styled.div<ErrorProps>`
+export const Error = styled.div<ErrorPropTypes>`
 	max-width: ${(props) => props.maxWidth + "px"};
 	height: ${(props) => props.maxHeight + "px"};
 	position: relative;

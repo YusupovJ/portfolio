@@ -4,9 +4,7 @@ import Reveal from "react-awesome-reveal";
 import { skillsDetail } from "src/helpers/utils/skillsDetails";
 import { Bar, Detail } from "./style";
 
-interface Props {}
-
-const Details: React.FC<Props> = (props) => {
+const Details: React.FC = () => {
 	return (
 		<>
 			{skillsDetail.map((detail, index) => {

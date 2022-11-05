@@ -2,9 +2,7 @@ import React, { memo } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Date, Text, Title, Wrapper } from "./style";
 
-interface Props {}
-
-const Rank: React.FC<Props> = (props) => {
+const Rank: React.FC = () => {
 	return (
 		<Fade direction="up">
 			<Wrapper>

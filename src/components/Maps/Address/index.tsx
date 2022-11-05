@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Content, Wrapper } from "./style";
 
-interface Props {}
+interface PropTypes {}
 
-const Address: React.FC<Props> = (props) => {
+const Address: React.FC<PropTypes> = (props) => {
 	return (
 		<Wrapper>
 			<Fade direction="up" delay={1000}>

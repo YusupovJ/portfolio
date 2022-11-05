@@ -5,9 +5,7 @@ import Maps from "../Maps";
 import Section from "../Section";
 import { Wrapper } from "./style";
 
-interface Props {}
-
-const ContactMe: React.FC<Props> = (props) => {
+const ContactMe: React.FC = () => {
 	return (
 		<Wrapper>
 			<Section className="contact-section" bg="Contact" position={["left", "top"]}>

@@ -1,23 +1,21 @@
 import { StaticImageData } from "next/image";
 import React, { memo } from "react";
-import { Fade } from "react-awesome-reveal";
 import Img from "src/shared/Img";
 import { Wrapper } from "./style";
 
-interface Props {
+/* Компонент ссылки на проект */
+
+interface PropTypes extends React.ComponentPropsWithoutRef<"div"> {
 	link: string;
 	preview: StaticImageData;
-	className?: string;
 }
 
-const Work: React.FC<Props> = (props) => {
+const Work: React.FC<PropTypes> = (props) => {
 	return (
-		<Wrapper className={props.className}>
-			{/* <Fade> */}
+		<Wrapper {...props} className={props.className}>
 			<a href={props.link} target="_blank" rel="noreferrer">
 				<Img src={props.preview} />
 			</a>
-			{/* </Fade> */}
 		</Wrapper>
 	);
 };

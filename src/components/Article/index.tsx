@@ -4,13 +4,15 @@ import Tag from "../Tag";
 import Title from "../Title";
 import { Wrapper } from "./style";
 
-interface Props {
+/* Компонент для вывода h2 и p */
+
+interface PropTypes {
 	title: string;
 	children: React.ReactNode;
 	className?: string;
 }
 
-const Article: React.FC<Props> = (props) => {
+const Article: React.FC<PropTypes> = (props) => {
 	return (
 		<Wrapper className={props.className}>
 			<Title h={2}>{props.title}</Title>

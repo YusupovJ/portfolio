@@ -8,9 +8,9 @@ import { Row, Works, Wrapper } from "./style";
 import { works } from "src/helpers/utils/works";
 import Work from "../Work";
 
-interface Props {}
+interface PropTypes {}
 
-const MyPortfolio: React.FC<Props> = (props) => {
+const MyPortfolio: React.FC<PropTypes> = (props) => {
 	return (
 		<Wrapper>
 			<Section bg="Work" position={["right", "top"]}>
@@ -26,7 +26,11 @@ const MyPortfolio: React.FC<Props> = (props) => {
 				<Works>
 					<Row>
 						{works.map((work) => {
-							return <Work key={work.id} link={work.link} preview={work.preview} />;
+							return (
+								<Fade key={work.id}>
+									<Work link={work.link} preview={work.preview} />
+								</Fade>
+							);
 						})}
 					</Row>
 				</Works>

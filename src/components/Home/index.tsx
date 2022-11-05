@@ -6,13 +6,17 @@ import Tag from "../Tag";
 import Title from "../Title";
 import { Wrapper } from "./style";
 
-interface Props {}
+interface PropTypes {}
 
-const Home: React.FC<Props> = (props) => {
+const Home: React.FC<PropTypes> = (props) => {
 	const router = useRouter();
 
 	return (
 		<Wrapper>
+			{/*
+			 * "%" - <br />
+			 * "*" - логотип J
+			 */}
 			<Title h={1}>Hi,%I am *amshid%web developer</Title>
 			<Fade className="text" direction="up" delay={500}>
 				<Tag tagName="p">Front End Developer / ReactTS Expert</Tag>

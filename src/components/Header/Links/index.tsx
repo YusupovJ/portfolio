@@ -2,9 +2,7 @@ import React, { memo } from "react";
 import { links } from "src/helpers/utils/links";
 import { Link, Wrapper } from "./style";
 
-interface Props {}
-
-const Links: React.FC<Props> = (props) => {
+const Links: React.FC = (props) => {
 	return (
 		<Wrapper>
 			{links.map((link) => {

@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import { useAppSelector } from "src/helpers/hooks";
 import { Logo, ProgressBar, Wrapper } from "./style";
 
-interface Props {}
+/* Компонент прелоадера */
 
-const Preloader: React.FC<Props> = (props) => {
+const Preloader: React.FC = () => {
 	const preloader = useAppSelector((state) => state.preloader);
 
 	return (

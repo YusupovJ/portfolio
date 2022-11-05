@@ -123,8 +123,8 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     a:focus {
-        color: ${(props) => props.theme.colors.active};
-        fill: ${(props) => props.theme.colors.active};
+        color: ${(props) => props.theme.colors.active} !important;
+        fill: ${(props) => props.theme.colors.active} !important;
     }
 
     /* делаем темными yandex карты  */

@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
 	transition: all 0.5s ease 0s;
 	position: relative;
 	overflow: hidden;
+	height: 100%;
 	div {
 		height: 100%;
 	}

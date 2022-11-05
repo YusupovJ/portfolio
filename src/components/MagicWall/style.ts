@@ -1,6 +1,17 @@
+import { em } from "src/helpers/functions";
 import styled, { keyframes } from "styled-components";
 
-const rowMoving = keyframes`
+const colMovingX = keyframes`
+	from {
+		transform: translate(0, 0);
+	}
+
+	to {
+		transform: translate(calc(-100%), 0);
+	}
+`;
+
+const colMovingY = keyframes`
 	from {
 		transform: translate(0, 0);
 	}
@@ -10,55 +21,90 @@ const rowMoving = keyframes`
 	}
 `;
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.div`
 	display: flex;
 	width: 100%;
-	gap: 20px;
-	perspective: 500px;
-	.work-article {
+	perspective: 600px;
+	height: fit-content;
+	.work-section {
 		align-self: center;
-		flex: 1 1 40%;
+		flex: 1 1 45%;
+	}
+	@media only screen and (max-width: ${em(767.98)}) {
+		flex-direction: column;
 	}
 `;
 
-export const Row = styled.div`
+export const Column = styled.div`
 	flex: 1 1 30%;
 	display: flex;
 	flex-direction: column;
 	gap: 40px 20px;
 	flex: 1 1 auto;
 	.work-item {
-		flex: 0 0 250px;
+		flex: 0 0 17vw;
+		box-shadow: 10px 10px 10px ${(props) => props.theme.colors.bgSecondary};
 	}
 
-	&.row-1 {
-		animation: ${rowMoving} 8s linear 0s infinite alternate;
+	&.col-1 {
+		animation: ${colMovingY} 5s linear 0s infinite alternate;
 		.work-item {
 			transform: scale(0.6);
 		}
 	}
-	&.row-2 {
-		animation: ${rowMoving} 6s linear 0s infinite alternate-reverse;
+	&.col-2 {
+		animation: ${colMovingY} 4s linear 0s infinite alternate-reverse;
 		.work-item {
 			transform: scale(0.8);
 		}
 	}
-	&.row-3 {
-		animation: ${rowMoving} 5s linear 0s infinite alternate;
+	&.col-3 {
+		animation: ${colMovingY} 3s linear 0s infinite alternate;
 		.work-item {
 			transform: scale(0.9);
 		}
+	}
+
+	@media only screen and (max-width: ${em(767.98)}) {
+		flex-direction: row;
+		.work-item {
+			min-height: 250px;
+		}
+		&.col-1 {
+			animation: ${colMovingX} 5s linear 0s infinite alternate;
+		}
+		&.col-2 {
+			animation: ${colMovingX} 4s linear 0s infinite alternate-reverse;
+		}
+		&.col-3 {
+			animation: ${colMovingX} 3s linear 0s infinite alternate;
+		}
+		.work-item {
+			flex: 0 0 250px;
+		}
+	}
+
+	&.hover {
+		animation-play-state: paused;
 	}
 `;
 
 export const Container = styled.div`
 	height: fit-content;
 	display: flex;
-	gap: 20px;
+	@media only screen and (max-width: ${em(767.98)}) {
+		flex-direction: column;
+	}
 `;
 
 export const Works = styled.div`
-	transform: rotateY(-20deg) translate(-90px);
-	height: 100vh;
-	flex: 1 1 60%;
+	transform: rotateY(-30deg) translate(-70px, 30px);
+	height: 80vh;
+	flex: 1 1 55%;
+	@media only screen and (min-width: ${em(1440)}) {
+		transform: rotateY(-30deg) translate(-10vw, 30px);
+	}
+	@media only screen and (max-width: ${em(991.98)}) {
+		transform: rotateY(-30deg) translate(-50px, 30px);
+	}
 `;

@@ -6,12 +6,12 @@ import { Button, Input } from "src/shared/UI";
 import Tag from "../Tag";
 import { Wrapper } from "./style";
 
-interface Props {}
+/* Компонент для отправки сообщения на почту */
 
 const URL = "https://api.emailjs.com/api/v1.0/email/send";
 
-const ContactForm: React.FC<Props> = (props) => {
-	const { send, status, error } = useAsync(URL, "POST", "application/json");
+const ContactForm: React.FC = () => {
+	const { send, status } = useAsync(URL, "POST", "application/json");
 
 	const submit = (values: any) => {
 		send({

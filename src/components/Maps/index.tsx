@@ -5,9 +5,10 @@ import GeoMarker from "src/assets/img/GeoMarker.png";
 import Address from "./Address";
 import { FullscreenControl, Map, Placemark, TypeSelector, YMaps } from "@pbe/react-yandex-maps";
 
-interface Props {}
+/* Компонент с картой */
+// https://react-yandex-maps.vercel.app/ - документация к библиотеке @pbe/react-yandex-maps
 
-const Maps: React.FC<Props> = (props) => {
+const Maps: React.FC = () => {
 	const position = [41.53693, 60.646318];
 
 	return (

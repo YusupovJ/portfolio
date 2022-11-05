@@ -17,7 +17,7 @@ export const Wrapper = styled.section`
 		color: ${(props) => props.theme.colors.textSecondary};
 	}
 
-	.j {
+	.logo {
 		width: 60px;
 		height: 72px;
 	}

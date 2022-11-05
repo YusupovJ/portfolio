@@ -2,7 +2,9 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import Tag from "../Tag";
 
-interface Props {
+/* Компонент для удобного создания страницы */
+
+interface PropTypes {
 	children: React.ReactNode;
 }
 
@@ -12,7 +14,7 @@ const Main = styled.main`
 	min-height: 100vh;
 `;
 
-const Page: React.FC<Props> = (props) => {
+const Page: React.FC<PropTypes> = (props) => {
 	return (
 		<Main>
 			<Tag tagName="html" noWriteTag dblGap>

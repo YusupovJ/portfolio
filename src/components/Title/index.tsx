@@ -1,17 +1,21 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { Wrapper } from "./style";
 import Logo from "src/assets/svg/Logo.svg";
 import Tag from "../Tag";
 import { Bounce, Rotate } from "react-awesome-reveal";
 
-interface Props {
+/* Компонент заголовка */
+
+interface PropTypes {
 	children: string;
 	h: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-const Title: React.FC<Props> = (props) => {
+const Title: React.FC<PropTypes> = (props) => {
 	const titleArray = props.children.split("");
 
+	// Навешиваем событие тут, чтобы когда пользовать убрал курсор с буквы до момента завершения анимации, анимация закончилась
+	// Если бы дали hover в css, то анимация Bounce закончилась бы резко
 	const hoverHandler = (e: any) => {
 		e.target.closest("span, svg").classList.add("hover");
 
@@ -29,7 +33,7 @@ const Title: React.FC<Props> = (props) => {
 					if (letter === "*") {
 						return (
 							<Rotate childClassName="letter" delay={90 * index} key={index}>
-								<Logo onMouseOver={hoverHandler} className="j" />
+								<Logo onMouseOver={hoverHandler} className="logo" />
 							</Rotate>
 						);
 					}

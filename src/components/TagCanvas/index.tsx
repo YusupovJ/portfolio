@@ -2,6 +2,11 @@ import React, { memo, useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
 import { skills } from "src/helpers/utils/skills";
 
+/* Компонент со скилами в шаре */
+// Скрипт библиотеки валяеться в public/js/tagcanvas.js, а подключал его в pages/_document.tsx на 23 строке
+// Инструкция по подключению - https://stackoverflow.com/questions/60222556/how-to-import-this-old-library-called-tagcanvas
+// Ответ дал пользователь Snehil
+
 const TagsCanvas: React.FC = () => {
 	const width = window.innerWidth > 982 ? window.innerWidth / 2 : window.innerWidth;
 	const height = window.innerHeight > 982 ? window.innerHeight / 2 : window.innerHeight / 1.1;

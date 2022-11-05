@@ -5,9 +5,7 @@ import Section from "../Section";
 import TagCanvas from "../TagCanvas";
 import { Wrapper } from "./style";
 
-interface Props {}
-
-const About: React.FC<Props> = (props) => {
+const About: React.FC = () => {
 	return (
 		<Wrapper>
 			<Section bg="About" position={["right", "bottom"]}>

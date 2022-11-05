@@ -1,6 +1,8 @@
 import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 
+/* Компонент с точками и линиями в начале сайта */
+
 export const Wrapper = styled.div`
 	position: absolute;
 	top: 0;

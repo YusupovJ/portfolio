@@ -7,8 +7,6 @@ import Section from "../Section";
 import Details from "./Details";
 import Rank from "./Rank";
 
-interface Props {}
-
 const Wrapper = styled.div`
 	padding: 100px 20px 100px 0px;
 	.skills-section {
@@ -27,7 +25,7 @@ const Wrapper = styled.div`
 	}
 `;
 
-const Skills: React.FC<Props> = (props) => {
+const Skills: React.FC = () => {
 	return (
 		<Wrapper>
 			<Section bg="Skills" position={["left", "top"]} className="skills-section">
