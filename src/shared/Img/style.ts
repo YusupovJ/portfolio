@@ -6,6 +6,10 @@ interface ErrorPropTypes {
 	maxHeight?: number | string;
 }
 
+export const Wrapper = styled.div`
+	position: relative;
+`;
+
 export const Error = styled.div<ErrorPropTypes>`
 	max-width: ${(props) => props.maxWidth + "px"};
 	height: ${(props) => props.maxHeight + "px"};

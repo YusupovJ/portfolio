@@ -14,7 +14,7 @@ const Work: React.FC<PropTypes> = (props) => {
 	return (
 		<Wrapper {...props} className={props.className}>
 			<a href={props.link} target="_blank" rel="noreferrer">
-				<Img src={props.preview} />
+				<Img src={props.preview} placeholder="blur" />
 			</a>
 		</Wrapper>
 	);
