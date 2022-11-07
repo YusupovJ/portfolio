@@ -30,11 +30,11 @@ const Link: React.FC<PropTypes> = (props) => {
 				router.events.on("routeChangeComplete", () => {
 					dispatch(changeStatus("complete"));
 
-					// После того как route удался через секунду скрываем прелоадер, чтобы hotbar дошел до конца
+					// После того как route удался через некоторое время скрываем прелоадер, чтобы hotbar дошел до конца
 					setTimeout(() => {
 						dispatch(hidePreloader());
 						dispatch(changeStatus("start"));
-					}, 1000);
+					}, 700);
 				});
 			}, 1000);
 

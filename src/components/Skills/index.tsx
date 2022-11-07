@@ -30,18 +30,22 @@ const Skills: React.FC = () => {
 		<Wrapper>
 			<Section bg="Skills" position={["left", "top"]} className="skills-section">
 				<Article title="Skills & %Experience" className="column">
-					Since beginning my journey as a freelance developer nearly 10 years ago, I have done remote work for
-					agencies, consulted for startups, and collaborated with talented people to create web products for
-					both business and consumer use.
+					When I started my journey into the Frontend world, I started to learn technologies like HTML, CSS
+					and JS.
 					<br />
 					<br />
-					I create successful responsive websites that are fast, easy to use, and built with best practices.
-					The main area of my expertise is front-end development, HTML, CSS, JS, building small and medium web
-					apps, custom plugins, features, animations, and coding interactive layouts.
+					Later, I created simple, responsive websites. But then I still did not understand many things,
+					because I studied alone and no one helped me.
 					<br />
-					<br />I also have full-stack developer experience with popular open-source CMS like (WordPress,
-					Drupal, Magento, Keystone.js and others). <br />
-					<br /> Visit my <a href="#">LinkedIn</a> profile for more details or just{" "}
+					<br />
+					Because of this, I was sent to programming courses, where I learned a lot of different technologies.
+					And my list of projects grew.
+					<br />
+					<br />
+					And now I am a good Frontend specialist
+					<br />
+					<br />
+					Visit my <a href="#">LinkedIn</a> profile for more details or just{" "}
 					<Link href="/contact">contact me</Link>.
 				</Article>
 				<div className="column">

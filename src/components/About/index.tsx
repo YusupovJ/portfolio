@@ -1,6 +1,6 @@
-import Link from "next/link";
 import React, { memo } from "react";
 import Article from "../Article";
+import Link from "../Link";
 import Section from "../Section";
 import TagCanvas from "../TagCanvas";
 import { Wrapper } from "./style";
@@ -10,12 +10,10 @@ const About: React.FC = () => {
 		<Wrapper>
 			<Section bg="About" position={["right", "bottom"]}>
 				<Article title="About Me">
-					Since Adobe Flash was a complete innovation, alongside with CSS 1.0 and HTML 4.01 as standards of
-					the current web I have been passionate about web. <br /> <br /> For over a decade I had many
-					opportunities to work in a vast spectrum of <Link href="/skills">web technologies</Link> what let me
-					gather a significant amount of various experience. Working for companies and individuals around the
-					globe I met and learnt from amazing and ambitious people. <br /> <br /> I currently work remotely
-					with a selected freelance client base being open for new opportunities.
+					I started my journey as a Frontend developer when I saw a video about programming on YouTube. And
+					then I was carried into this interesting and unexplored world. <br />
+					<br /> I first started learning Python because everyone recommended it, but after a while I got
+					interested in <Link href="/skills">website development</Link>
 				</Article>
 			</Section>
 			<TagCanvas />

@@ -10,8 +10,8 @@ const ContactMe: React.FC = () => {
 		<Wrapper>
 			<Section className="contact-section" bg="Contact" position={["left", "top"]}>
 				<Article title="Contact me">
-					I am interested in freelance opportunities – especially ambitious or large projects. However, if you
-					have other request or question, do not hesitate to use the form.
+					At the moment I agree to the development of any sites, so if you have any suggestions feel free to
+					contact me
 				</Article>
 				<ContactForm />
 			</Section>

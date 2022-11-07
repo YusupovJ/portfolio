@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "../Link";
 import React, { memo } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Button } from "src/shared/UI";
@@ -15,10 +15,11 @@ const MyPortfolio: React.FC<PropTypes> = (props) => {
 		<Wrapper>
 			<Section bg="Work" position={["right", "top"]}>
 				<Article title="My Portfolio">
-					A small gallery of recent projects chosen by me. I have done them all together with amazing people
-					from companies <br /> around the globe. It is only a drop in the ocean compared to the entire list.
+					The small gallery of my projects. But now there are a few project, <br /> because I have just
+					started making projects. In the future, this gallery will be a larger than it is now.
 					<br />
-					Interested to see some more? Visit <Link href="/works">my work</Link> page.
+					<br />
+					Interested to see some more? Visit my <Link href="/works">work</Link> page.
 				</Article>
 				<Fade direction="left" duration={700}>
 					<Button className="see-more">See more</Button>

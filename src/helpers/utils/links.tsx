@@ -7,7 +7,7 @@ export const links: ILinks[] = [
 	{
 		id: 1,
 		icon: <LinkedIn />,
-		href: "https://github.com/YusupovJ",
+		href: "https://www.linkedin.com/in/jamshid-yusupov",
 	},
 	{
 		id: 2,
