@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, {memo} from "react";
 import styled from "styled-components";
 import Tag from "../Tag";
 
@@ -17,7 +17,7 @@ const Main = styled.main`
 const Page: React.FC<PropTypes> = (props) => {
 	return (
 		<Main>
-			<Tag tagName="html" noWriteTag dblGap>
+			<Tag tagName="html" noWriteTag>
 				<Tag tagName="body" gap={0} noWriteTag>
 					{props.children}
 				</Tag>

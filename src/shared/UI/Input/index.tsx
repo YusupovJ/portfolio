@@ -5,7 +5,7 @@ import EyeInvisible from "src/assets/svg/EyeInvisible.svg";
 
 type validateInput = (target: EventTarget & HTMLInputElement, setError: Dispatch<SetStateAction<string>>) => void;
 
-interface PropTypes extends React.ComponentPropTypesWithoutRef<"input"> {
+interface PropTypes extends React.ComponentPropsWithoutRef<"input"> {
 	error?: string;
 	variant?: "text" | "number" | "email" | "password";
 	validate?: "email" | "password" | validateInput;

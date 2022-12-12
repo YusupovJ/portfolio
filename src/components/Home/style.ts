@@ -1,4 +1,4 @@
-import { em, rem } from "src/helpers/functions";
+import {em, rem} from "src/helpers/functions";
 import styled from "styled-components";
 
 export const Wrapper = styled.section`
@@ -31,7 +31,7 @@ export const Wrapper = styled.section`
 			font-size: ${rem(80)};
 		}
 
-		.j {
+		.logo {
 			width: 50px;
 			height: 72px;
 		}
@@ -42,7 +42,7 @@ export const Wrapper = styled.section`
 			font-size: ${rem(60)};
 		}
 
-		.j {
+		.logo {
 			width: 45px;
 			height: 60px;
 		}
@@ -56,7 +56,7 @@ export const Wrapper = styled.section`
 			font-size: ${rem(45)};
 		}
 
-		.j {
+		.logo {
 			width: 30px;
 			height: 40px;
 		}

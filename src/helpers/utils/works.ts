@@ -1,5 +1,6 @@
 import { IWork } from "../types";
 import houzingImg from "../../assets/img/houzingImg.png";
+import creativeImg from "../../assets/img/creativeImg.png";
 
 export const works: IWork[] = [
 	{
@@ -9,8 +10,8 @@ export const works: IWork[] = [
 	},
 	{
 		id: 2,
-		link: "https://jamshud-houzing.netlify.com",
-		preview: houzingImg,
+		link: "https://jamshud-creative.netlify.app/",
+		preview: creativeImg,
 	},
 	{
 		id: 3,

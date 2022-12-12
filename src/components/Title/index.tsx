@@ -1,8 +1,8 @@
-import React, { memo } from "react";
-import { Wrapper } from "./style";
+import React, {memo} from "react";
+import {Wrapper} from "./style";
 import Logo from "src/assets/svg/Logo.svg";
 import Tag from "../Tag";
-import { Bounce, Rotate } from "react-awesome-reveal";
+import {Bounce, Rotate} from "react-awesome-reveal";
 
 /* Компонент заголовка */
 

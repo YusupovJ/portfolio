@@ -1,10 +1,10 @@
 import React, { memo } from "react";
+import { Wrapper } from "./style";
 import { Fade } from "react-awesome-reveal";
 import { useAsync } from "src/helpers/hooks";
-import Form from "src/shared/Form";
 import { Button, Input } from "src/shared/UI";
+import Form from "src/shared/Form";
 import Tag from "../Tag";
-import { Wrapper } from "./style";
 
 /* Компонент для отправки сообщения на почту */
 

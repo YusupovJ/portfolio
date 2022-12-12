@@ -1,4 +1,4 @@
-import { INavbar } from "../types";
+import {INavbar} from "../types";
 
 export const navbar: INavbar[] = [
 	{
@@ -14,7 +14,7 @@ export const navbar: INavbar[] = [
 	},
 	{
 		id: 3,
-		title: "Work",
+		title: "Works",
 		href: "/works",
 	},
 	{

@@ -36,7 +36,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Column = styled.div`
-	flex: 1 1 30%;
 	display: flex;
 	flex-direction: column;
 	gap: 40px 20px;
@@ -68,7 +67,7 @@ export const Column = styled.div`
 	@media only screen and (max-width: ${em(767.98)}) {
 		flex-direction: row;
 		.work-item {
-			min-height: 250px;
+			height: 250px;
 		}
 		&.col-1 {
 			animation: ${colMovingX} 5s linear 0s infinite alternate;

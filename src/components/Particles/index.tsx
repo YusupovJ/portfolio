@@ -1,9 +1,9 @@
-import React, { memo, useEffect } from "react";
+import React, {memo, useEffect} from "react";
 import styled from "styled-components";
 
 /* Компонент с точками и линиями в начале сайта */
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
 	position: absolute;
 	top: 0;
 	overflow: hidden;
@@ -11,7 +11,15 @@ export const Wrapper = styled.div`
 	z-index: -1;
 	width: 100%;
 	filter: brightness(80%);
+	canvas {
+		transform: translate(130px, 0);
+	}
 `;
+
+interface ICoords {
+	x: number;
+	y: number;
+}
 
 interface IProperties {
 	color: string;
@@ -23,44 +31,49 @@ interface IProperties {
 	lineLength: number;
 	clickDistance: number;
 	acceleration: number;
+	mainRad: number;
+	smooth: number;
 }
 
 const Canvas: React.FC = () => {
+	let whichColor = Math.random() > 0.5 ? true : false;
+	const getColor = (a: number = 1): string => {
+		const r = whichColor ? "8" : "253";
+		const g = whichColor ? `253` : "33";
+		const b = whichColor ? `216` : "85";
+
+		return `rgba(${r}, ${g}, ${b}, ${a})`;
+	};
+
 	useEffect(() => {
 		const canvas: HTMLCanvasElement = document.getElementById("particles") as HTMLCanvasElement;
-		const ctx: CanvasRenderingContext2D = canvas.getContext("2d") as CanvasRenderingContext2D;
-
-		// Массив точек на экране
-		const particles: Particle[] = [];
-
-		let whichColor = Math.random() > 0.5 ? true : false;
-		const getColor = (a: number = 1): string => {
-			const r = whichColor ? "8" : "253";
-			const g = whichColor ? `253` : "33";
-			const b = whichColor ? `216` : "85";
-
-			return `rgba(${r}, ${g}, ${b}, ${a})`;
-		};
+		const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+		const headerWidth = document.querySelector("header")?.clientWidth || 0;
 
 		// Настройки
 		const properties: IProperties = {
 			color: getColor(1),
-			radius: 3,
+			radius: 2,
 			count: document.documentElement.clientWidth > 574.98 ? 100 : 40,
 			velocity: 0.7,
-			w: document.documentElement.clientWidth,
+			w: document.documentElement.clientWidth - headerWidth,
 			h: 720,
 			lineLength: 150,
 			clickDistance: 50,
 			acceleration: 2,
+			mainRad: document.documentElement.clientWidth > 574.98 ? 125 : 60,
+			smooth: 5,
 		};
+
+		// Массив точек на экране
+		const particles: Particle[] = [];
 
 		/* ------------------------------------ */
 
 		// Размеры холста
 		const setScale = () => {
-			canvas.width = document.documentElement.clientWidth;
-			properties.w = document.documentElement.clientWidth;
+			canvas.width = document.documentElement.clientWidth - headerWidth;
+			properties.w = document.documentElement.clientWidth - headerWidth;
 		};
 
 		window.addEventListener("resize", setScale);
@@ -75,12 +88,14 @@ const Canvas: React.FC = () => {
 			public y: number;
 			public velocityX: number;
 			public velocityY: number;
+			public mainRad: number;
 
 			constructor() {
 				this.x = Math.random() * innerWidth;
 				this.y = Math.random() * 680;
 				this.velocityX = Math.random() * (properties.velocity * 2) - properties.velocity;
 				this.velocityY = Math.random() * (properties.velocity * 2) - properties.velocity;
+				this.mainRad = properties.mainRad;
 			}
 
 			position() {
@@ -103,23 +118,11 @@ const Canvas: React.FC = () => {
 				this.y += this.velocityY;
 			}
 
-			// При клике на документ ускоряем точки
-			reDrawOnClick() {
-				this.velocityX *= properties.acceleration;
-				this.velocityY *= properties.acceleration;
-
-				// И возвращаем скорость через секунду
-				setTimeout(() => {
-					this.velocityX /= properties.acceleration;
-					this.velocityY /= properties.acceleration;
-				}, 1000);
-			}
-
-			reDraw() {
+			reDraw(x?: number, y?: number, rad?: number, isMain?: boolean) {
 				ctx.beginPath();
-				ctx.arc(this.x, this.y, properties.radius, 0, Math.PI * 2);
+				ctx.arc(x || this.x, y || this.y, rad || properties.radius, 0, Math.PI * 2);
 				ctx.closePath();
-				ctx.fillStyle = properties.color;
+				ctx.fillStyle = isMain ? "transparent" : properties.color;
 				ctx.fill();
 			}
 		}
@@ -153,10 +156,18 @@ const Canvas: React.FC = () => {
 			}
 		};
 
-		const clickHandler = (e: MouseEvent) => {
+		const update = (mouse: ICoords) => {
 			for (let i = 0; i < particles.length; i++) {
 				const particle = particles[i];
-				particle.reDrawOnClick();
+				const delta: ICoords = {x: particle.x - mouse.x, y: particle.y - mouse.y};
+				const distance = Math.sqrt(delta.x ** 2 + delta.y ** 2);
+				const hitboxX = delta.x / Math.abs(delta.x);
+				const hitboxY = delta.y / Math.abs(delta.y);
+
+				if (distance < properties.mainRad) {
+					particle.x += hitboxX * properties.smooth;
+					particle.y += hitboxY * properties.smooth;
+				}
 			}
 		};
 
@@ -183,11 +194,18 @@ const Canvas: React.FC = () => {
 				particles.push(new Particle());
 			}
 
-			document.addEventListener("click", clickHandler);
 			loop();
 		};
 
 		init();
+
+		window.addEventListener("mousemove", (event: MouseEvent) => {
+			update({x: event.pageX - headerWidth, y: event.pageY});
+		});
+
+		window.addEventListener("touchmove", (event: TouchEvent) => {
+			update({x: event.touches[0].pageX - headerWidth, y: event.touches[0].pageY});
+		});
 	}, []);
 
 	return (

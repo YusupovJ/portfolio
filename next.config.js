@@ -2,9 +2,6 @@
 const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
-	images: {
-		domains: ["amazingarchitecture.com", "cdn.filestackcontent.com"],
-	},
 	env: {
 		service_id: "portfolio_2007",
 		template_id: "template_2igiphr",
