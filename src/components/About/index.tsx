@@ -10,10 +10,8 @@ const About: React.FC = () => {
 		<Wrapper>
 			<Section bg="About" position={["right", "bottom"]}>
 				<Article title="About Me">
-					I started my journey as a Frontend developer when I saw a video about programming on YouTube. And
-					then I was carried into this interesting and unexplored world. <br />
-					<br /> I first started learning Python because everyone recommended it, but after a while I got
-					interested in <Link href="/skills">website development</Link>
+					I started my journey as a Frontend developer when I saw a video about programming on YouTube. And then I was carried into this interesting and unexplored world. <br />
+					<br /> I first started learning Python because everyone recommended it, but after a while I got interested in <Link href="/skills">website development</Link>
 				</Article>
 			</Section>
 			<TagCanvas />

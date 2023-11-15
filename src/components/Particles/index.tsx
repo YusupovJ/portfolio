@@ -1,4 +1,4 @@
-import React, {memo, useEffect} from "react";
+import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 
 /* Компонент с точками и линиями в начале сайта */
@@ -46,7 +46,7 @@ const Canvas: React.FC = () => {
 	};
 
 	useEffect(() => {
-		const canvas: HTMLCanvasElement = document.getElementById("particles") as HTMLCanvasElement;
+		const canvas = document.getElementById("particles") as HTMLCanvasElement;
 		const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 		const headerWidth = document.querySelector("header")?.clientWidth || 0;
 
@@ -100,17 +100,11 @@ const Canvas: React.FC = () => {
 
 			position() {
 				// Если точка хочет вылетить за экран, то устанавливаем противоположное движение
-				if (
-					(this.x + this.velocityX > properties.w && this.velocityX > 0) ||
-					(this.x + this.velocityX < 0 && this.velocityX < 0)
-				) {
+				if ((this.x + this.velocityX > properties.w && this.velocityX > 0) || (this.x + this.velocityX < 0 && this.velocityX < 0)) {
 					this.velocityX *= -1;
 				}
 
-				if (
-					(this.y + this.velocityY > properties.h && this.velocityY > 0) ||
-					(this.y + this.velocityY < 0 && this.velocityY < 0)
-				) {
+				if ((this.y + this.velocityY > properties.h && this.velocityY > 0) || (this.y + this.velocityY < 0 && this.velocityY < 0)) {
 					this.velocityY *= -1;
 				}
 
@@ -156,10 +150,10 @@ const Canvas: React.FC = () => {
 			}
 		};
 
-		const update = (mouse: ICoords) => {
+		const mouseMoveHandler = (mouse: ICoords) => {
 			for (let i = 0; i < particles.length; i++) {
 				const particle = particles[i];
-				const delta: ICoords = {x: particle.x - mouse.x, y: particle.y - mouse.y};
+				const delta: ICoords = { x: particle.x - mouse.x, y: particle.y - mouse.y };
 				const distance = Math.sqrt(delta.x ** 2 + delta.y ** 2);
 				const hitboxX = delta.x / Math.abs(delta.x);
 				const hitboxY = delta.y / Math.abs(delta.y);
@@ -200,11 +194,11 @@ const Canvas: React.FC = () => {
 		init();
 
 		window.addEventListener("mousemove", (event: MouseEvent) => {
-			update({x: event.pageX - headerWidth, y: event.pageY});
+			mouseMoveHandler({ x: event.pageX - headerWidth, y: event.pageY });
 		});
 
 		window.addEventListener("touchmove", (event: TouchEvent) => {
-			update({x: event.touches[0].pageX - headerWidth, y: event.touches[0].pageY});
+			mouseMoveHandler({ x: event.touches[0].pageX - headerWidth, y: event.touches[0].pageY });
 		});
 	}, []);
 
