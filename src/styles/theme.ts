@@ -1,23 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-export const lightTheme: DefaultTheme = {
-	borderRad: "2px",
-	secondaryFont: "Coolvetica",
-	colors: {
-		primary: "",
-		secondary: "",
-		bg: "",
-		bgSecondary: "",
-		bgThird: "",
-		text: "",
-		textSecondary: "",
-		tag: "",
-		active: "",
-		selection: "",
-	},
-};
-
-export const darkTheme: DefaultTheme = {
+export const theme: DefaultTheme = {
 	borderRad: "2px",
 	secondaryFont: "Coolvetica",
 	colors: {
@@ -31,5 +14,7 @@ export const darkTheme: DefaultTheme = {
 		textSecondary: "#8d8d8d",
 		tag: "#515152",
 		selection: "rgba(68, 68, 68, 0.5)",
+		success: "#28c21d",
+		error: "#cd0f0f",
 	},
 };

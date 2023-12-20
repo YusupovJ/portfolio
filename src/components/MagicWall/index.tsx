@@ -1,6 +1,7 @@
 import React, { memo, useState } from "react";
 import { works } from "src/helpers/utils/works";
 import Article from "../Article";
+import Link from "../Link";
 import Section from "../Section";
 import Work from "../Work";
 import { Container, Column, Works, Wrapper } from "./style";
@@ -11,7 +12,9 @@ const MagicWall: React.FC = () => {
 
 	// Делим все проекты на три части, потом отображаем в верстке
 	const worksOneThird = works.filter((_, index) => index < works.length / 3);
-	const worksTwoThird = works.filter((_, index) => index >= works.length / 3 && index < (works.length * 2) / 3);
+	const worksTwoThird = works.filter(
+		(_, index) => index >= works.length / 3 && index < (works.length * 2) / 3
+	);
 	const worksThreeThird = works.filter((_, index) => index >= (works.length * 2) / 3);
 
 	// Аргумент col мы передаем каждой колоне отдельно
@@ -27,8 +30,10 @@ const MagicWall: React.FC = () => {
 		<Wrapper>
 			<Section className="work-section" bg="Works" position={["left", "top"]}>
 				<Article title="My Portfolio">
-					A small gallery of recent projects chosen by me. I have done them all together with amazing people
-					from companies <br /> around the globe. It is only a drop in the ocean compared to the entire list.
+					A small gallery of quite interesting projects created by me. You can see that
+					they are all unique and I used lots of different technologies to create them. If
+					you need something like these, you can <Link href="/contact">contact </Link>
+					with me.
 				</Article>
 			</Section>
 			<Works>

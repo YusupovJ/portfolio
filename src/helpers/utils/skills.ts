@@ -14,7 +14,7 @@ export const skills: ISkills[] = [
 	{
 		id: 3,
 		link: "https://en.wikipedia.org/wiki/JavaScript",
-		title: "ES5/ES6",
+		title: "JavaScript",
 	},
 	{
 		id: 4,
@@ -43,8 +43,8 @@ export const skills: ISkills[] = [
 	},
 	{
 		id: 9,
-		link: "http://gulpjs.com/",
-		title: "Gulp",
+		link: "https://tailwindcss.com/",
+		title: "Tailwindcss",
 	},
 	{
 		id: 10,

@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { GlobalStyles } from "src/styles";
-import ThemeController from "src/shared/ThemeController";
 import store from "src/helpers/store";
 import Header from "src/components/Header";
 import Preloader from "src/components/Preloader";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, ThemeProvider } from "styled-components";
+import { theme } from "src/styles/theme";
 
 const animateFade = keyframes`
 	from {
@@ -37,14 +37,14 @@ const Wrapper = styled.div`
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<Provider store={store}>
-			<ThemeController>
+			<ThemeProvider theme={theme}>
 				<GlobalStyles />
 				<Wrapper>
 					<Header />
 					<Preloader />
 					<Component {...pageProps} />
 				</Wrapper>
-			</ThemeController>
+			</ThemeProvider>
 		</Provider>
 	);
 }

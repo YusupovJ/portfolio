@@ -14,6 +14,7 @@ const ContactForm: React.FC = () => {
 	const { send, status } = useAsync(URL, "POST", "application/json");
 
 	const submit = (values: any) => {
+		console.log(values);
 		send({
 			template_id: process.env.template_id,
 			user_id: process.env.user_id,
@@ -30,11 +31,13 @@ const ContactForm: React.FC = () => {
 			<Tag tagName="form" noWriteTag>
 				<Form className="form-wrapper" submit={submit}>
 					<Fade direction="up" className="form-input">
-						<Input required variant="text" placeholder="Name" name="name" />
-					</Fade>
-
-					<Fade direction="up" className="form-input">
-						<Input variant="email" placeholder="Email" required validate="email" name="email" />
+						<Input
+							variant="email"
+							placeholder="Email"
+							required
+							validate="email"
+							name="email"
+						/>
 					</Fade>
 					<Fade direction="up" className="form-textarea">
 						<Input placeholder="Message" name="message" textArea />

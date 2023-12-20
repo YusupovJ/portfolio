@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { toggle } from "../store/reducers/themeToggler";
 
 // Хуки типизированных useDispatch и useSelector в redux
 
@@ -57,16 +56,4 @@ export const useAsync = <T, U>(url: string, method: methodType, contentType: str
 	};
 
 	return { send, response, error, status };
-};
-
-/* ------------------------------------ */
-
-// Хук изменения темы
-
-export const useThemeToggler = () => {
-	const dispatch = useAppDispatch();
-
-	return () => {
-		dispatch(toggle());
-	};
 };

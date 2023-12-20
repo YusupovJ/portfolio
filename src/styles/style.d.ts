@@ -15,6 +15,8 @@ declare module "styled-components" {
 			bgThird: string;
 			selection: string;
 			active: string;
+			success: string;
+			error: string;
 		};
 	}
 }

@@ -10,7 +10,9 @@ const Form: React.FC<PropTypes> = ({ submit, children, ...props }) => {
 
 	const checkValid = (): boolean => {
 		if (formRef.current) {
-			const children: HTMLInputElement[] = Array.from(formRef.current.querySelectorAll("input"));
+			const children: HTMLInputElement[] = Array.from(
+				formRef.current.querySelectorAll("input,textarea")
+			);
 
 			for (let child of children) {
 				if (child?.dataset.error === "error" || (child.required && !child?.value)) {
@@ -24,7 +26,9 @@ const Form: React.FC<PropTypes> = ({ submit, children, ...props }) => {
 
 	const getValues = () => {
 		if (formRef.current) {
-			const children: HTMLInputElement[] = Array.from(formRef.current.querySelectorAll("input"));
+			const children: HTMLInputElement[] = Array.from(
+				formRef.current.querySelectorAll("input,textarea")
+			);
 
 			const values: any = {};
 
@@ -38,9 +42,9 @@ const Form: React.FC<PropTypes> = ({ submit, children, ...props }) => {
 
 	const handleNoValues = (): boolean => {
 		if (formRef.current) {
-			const children: HTMLInputElement[] = Array.from(formRef.current.querySelectorAll("input[required]"));
-
-			console.log(children);
+			const children: HTMLInputElement[] = Array.from(
+				formRef.current.querySelectorAll("input[required],textarea[required]")
+			);
 
 			for (const child of children) {
 				if (!child.value) {
